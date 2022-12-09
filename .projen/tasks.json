@@ -96,7 +96,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -118,15 +118,6 @@
       "steps": [
         {
           "spawn": "default"
-        }
-      ]
-    },
-    "eslint": {
-      "name": "eslint",
-      "description": "Runs eslint against the codebase",
-      "steps": [
-        {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
         }
       ]
     },
@@ -200,25 +191,7 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests",
-      "steps": [
-        {
-          "exec": "jest --passWithNoTests --updateSnapshot",
-          "receiveArgs": true
-        },
-        {
-          "spawn": "eslint"
-        }
-      ]
-    },
-    "test:watch": {
-      "name": "test:watch",
-      "description": "Run jest in watch mode",
-      "steps": [
-        {
-          "exec": "jest --watch"
-        }
-      ]
+      "description": "Run tests"
     },
     "unbump": {
       "name": "unbump",
