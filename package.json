@@ -3,11 +3,10 @@
   "description": "Set of tools for building projects in bndigital",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bndigital/projen.git"
+    "url": "https://github.com/bn-digital/projen.git"
   },
   "scripts": {
     "build": "npx projen build",
-    "bump": "npx projen bump",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -20,9 +19,7 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "release:latest": "npx projen release:latest",
     "test": "npx projen test",
-    "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen"
@@ -33,29 +30,26 @@
     "organization": true
   },
   "devDependencies": {
+    "@bn-digital/prettier-config": "^2.1.7",
     "@types/node": "^14",
     "jsii": "^1.72.0",
     "jsii-diff": "^1.72.0",
     "jsii-docgen": "^7.0.168",
     "jsii-pacmak": "^1.72.0",
     "npm-check-updates": "^16",
-    "projen": "^0.65.50",
-    "standard-version": "^9",
+    "projen": "0.65.50",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "projen": "^0.65.50"
-  },
-  "dependencies": {
-    "projen": "^0.65.50"
+    "projen": "0.65.50"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.0",
+  "version": "0.0.8",
   "types": "lib/index.d.ts",
   "stability": "stable",
   "jsii": {
@@ -66,6 +60,7 @@
       "rootDir": "src"
     }
   },
+  "prettier": "@bn-digital/prettier-config",
   "resolutions": {
     "@types/prettier": "2.6.0",
     "@types/babel__traverse": "7.18.2"

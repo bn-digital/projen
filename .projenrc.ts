@@ -1,23 +1,26 @@
-import {cdk, javascript} from 'projen';
+import { cdk, javascript } from "projen";
 
 const project = new cdk.JsiiProject({
-  name: 'projen',
-  deps: ["projen@^0.65.50"],
-  peerDeps: ["projen@^0.65.50"],
-  description: 'Set of tools for building projects in bndigital',
-  author: 'bndigital',
-  authorAddress: 'dev@bndigital.co', authorOrganization: true,
-  defaultReleaseBranch: 'latest',
+  name: "projen",
+  devDeps: ["projen@0.65.50", "@bn-digital/prettier-config"],
+  peerDeps: ["projen@0.65.50"],
+  description: "Set of tools for building projects in bndigital",
+  author: "bndigital",
+  authorAddress: "dev@bndigital.co",
+  authorOrganization: true,
+  defaultReleaseBranch: "latest",
   eslint: false,
+  mutableBuild: false,
   pullRequestTemplate: false,
-  githubOptions: { mergify: false, pullRequestLint: false, workflows: false},
+  tsconfig: { compilerOptions: { resolveJsonModule: true } },
+  githubOptions: { mergify: false, pullRequestLint: false, workflows: false },
   jest: false,
+  release: false,
   npmAccess: javascript.NpmAccess.PUBLIC,
-  packageName: '@bn-digital/projen',
+  packageName: "@bn-digital/projen",
   prettier: false,
   projenrcTs: true,
-  repository: 'https://github.com/bndigital/projen.git',
-  repositoryUrl: 'https://github.com/vlad.volkov/projen.git',
-  sampleCode: false,
+  repositoryUrl: "https://github.com/bn-digital/projen.git",
 });
+project.package.addField("prettier", "@bn-digital/prettier-config");
 project.synth();

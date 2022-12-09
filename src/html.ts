@@ -1,25 +1,13 @@
 import {
-  TypeScriptProject,
-  TypeScriptProjectOptions,
-} from 'projen/lib/typescript';
+  BndigitalProject,
+  BndigitalProjectOptions,
+} from './bndigital';
 
-export interface HtmlProjectOptions extends TypeScriptProjectOptions {
-
-}
+export interface HtmlProjectOptions extends BndigitalProjectOptions {}
 
 /**
- * Closed source CDK App, Typescript
- *
  * @pjid html
  */
-export class HtmlProject extends TypeScriptProject {
-  constructor(options: HtmlProjectOptions) {
-    super({
-      licensed: false,
-      dependabot: false,
-      eslint: false,
-      githubOptions:{...options.githubOptions, mergify: false, pullRequestLint: false, workflows: false},
-      ...options,
-    });
-  }
+export class HtmlProject extends BndigitalProject {
+
 }
