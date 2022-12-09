@@ -2,12 +2,12 @@ import {cdk, javascript} from 'projen';
 
 const project = new cdk.JsiiProject({
   name: 'projen',
-  deps: ["projen"],
-  peerDeps: ["projen"],
+  deps: ["projen@^0.65.50"],
+  peerDeps: ["projen@^0.65.50"],
   description: 'Set of tools for building projects in bndigital',
   author: 'bndigital',
   authorAddress: 'dev@bndigital.co', authorOrganization: true,
-  defaultReleaseBranch: 'main',
+  defaultReleaseBranch: 'latest',
   eslint: false,
   pullRequestTemplate: false,
   githubOptions: { mergify: false, pullRequestLint: false, workflows: false},

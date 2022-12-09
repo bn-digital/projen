@@ -20,7 +20,7 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "release": "npx projen release",
+    "release:latest": "npx projen release:latest",
     "test": "npx projen test",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
