@@ -1,8 +1,8 @@
-import { typescript } from 'projen'
+import { bndigital } from "@bn-digital/projen";
 
-export interface BndigitalProjectOptions extends typescript.TypeScriptProjectOptions {}
-const defaultOptions: Partial<BndigitalProjectOptions> = {
-  defaultReleaseBranch: 'latest',
+const defaultOptions: bndigital.ProjectOptions = {
+  defaultReleaseBranch: "latest",
+  releaseToNpm: false,
   dependabot: false,
   depsUpgrade: false,
   eslint: false,
@@ -19,16 +19,16 @@ const defaultOptions: Partial<BndigitalProjectOptions> = {
   docgen: false,
   pullRequestTemplate: false,
   sampleCode: false,
-}
+};
 
 /**
  * @pjid project
  */
-export class BndigitalProject extends typescript.TypeScriptProject {
-  constructor(options: BndigitalProjectOptions) {
+export class BndigitalProject extends bndigital.Project {
+  constructor(options: bndigital.ProjectOptions) {
     super({
       ...defaultOptions,
       ...options,
-    })
+    });
   }
 }

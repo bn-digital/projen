@@ -1,0 +1,11 @@
+{
+  "name": "@bn-samples/strapi-auth-passwordless",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@bn-digital/prettier-config": "^2.1.8"
+  },
+  "packageManager": "yarn@3.3.0"
+}
