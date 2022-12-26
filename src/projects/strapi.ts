@@ -1,9 +1,9 @@
-import { strapi } from "@bn-digital/projen";
+import { typescript } from "projen";
 
 /**
  * @pjid strapi
  */
-export class StrapiProject extends strapi.Project {
+export class StrapiProject extends typescript.TypeScriptProject {
   constructor({ strapi, ...options }: strapi.ProjectOptions) {
     super({
       strapi,

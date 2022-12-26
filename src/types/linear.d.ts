@@ -1,16 +1,9 @@
-import { Component as ProjectComponent } from "projen";
-import { bndigital } from "./project";
-
-export namespace linear {
+declare namespace linear {
   interface ComponentOptions {
     slug: string;
   }
 
-  class Component extends ProjectComponent {
+  class Component {
     readonly slug: string;
-
-    constructor(project: bndigital.Project) {
-      this.slug = project.linear.slug;
-    }
   }
 }

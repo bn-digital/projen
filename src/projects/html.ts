@@ -1,14 +1,11 @@
-import { DockerComponent } from "../components/docker";
-import { bndigital } from "../types";
+import { BndigitalProject } from "./bndigital";
 
-export interface HtmlProjectOptions extends bndigital.Project {}
-
+export type HtmlProjectOptions = bndigital.ProjectOptions;
 /**
  * @pjid html
  */
-export class HtmlProject extends bndigital.Project {
-  constructor(options: bndigital.ProjectOptions) {
+export class HtmlProject extends BndigitalProject {
+  constructor(options: HtmlProjectOptions) {
     super(options);
-    this._addComponent(new DockerComponent(this));
   }
 }

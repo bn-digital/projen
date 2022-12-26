@@ -1,4 +1,4 @@
-import { bndigital } from "@bn-digital/projen";
+import { typescript } from "projen";
 
 const defaultOptions: bndigital.ProjectOptions = {
   defaultReleaseBranch: "latest",
@@ -24,11 +24,12 @@ const defaultOptions: bndigital.ProjectOptions = {
 /**
  * @pjid project
  */
-export class BndigitalProject extends bndigital.Project {
+export class BndigitalProject extends typescript.TypeScriptProject {
   constructor(options: bndigital.ProjectOptions) {
     super({
       ...defaultOptions,
       ...options,
     });
+    this.package.addField("private", true);
   }
 }

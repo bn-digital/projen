@@ -88,7 +88,7 @@
       "description": "Generate API.md from .jsii manifest",
       "steps": [
         {
-          "exec": "jsii-docgen -o docs/API.md"
+          "exec": "jsii-docgen -o API.md"
         }
       ]
     },
@@ -109,7 +109,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "if [ ! -z ${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi"
+          "exec": "npx projen package-all"
         }
       ]
     },
@@ -160,7 +160,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
+          "exec": "pnpm update npm-check-updates"
         },
         {
           "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen'"
@@ -178,10 +178,10 @@
           "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "yarn install --check-files"
+          "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "yarn upgrade"
+          "exec": "pnpm update"
         },
         {
           "exec": "npx projen"
