@@ -1,4 +1,4 @@
-/// <reference types="./types" />
+/// <reference path="./types/index.d.ts" />
 
 export * from "./projects";
 export * from "./components";

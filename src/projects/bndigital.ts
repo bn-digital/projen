@@ -1,6 +1,7 @@
-import { typescript } from "projen";
+import { javascript, typescript } from "projen";
+import { mergeDeep } from "../utils";
 
-const defaultOptions: bndigital.ProjectOptions = {
+const defaultOptions: Partial<typescript.TypeScriptProjectOptions> = {
   defaultReleaseBranch: "latest",
   releaseToNpm: false,
   dependabot: false,
@@ -19,17 +20,17 @@ const defaultOptions: bndigital.ProjectOptions = {
   docgen: false,
   pullRequestTemplate: false,
   sampleCode: false,
+  packageManager: javascript.NodePackageManager.PNPM,
 };
 
 /**
  * @pjid project
  */
 export class BndigitalProject extends typescript.TypeScriptProject {
-  constructor(options: bndigital.ProjectOptions) {
-    super({
-      ...defaultOptions,
-      ...options,
-    });
+  constructor(
+    options: Omit<typescript.TypeScriptProjectOptions, "defaultReleaseBranch">
+  ) {
+    super(mergeDeep(options, defaultOptions));
     this.package.addField("private", true);
   }
 }

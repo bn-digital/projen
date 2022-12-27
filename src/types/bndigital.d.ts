@@ -1,4 +1,4 @@
-namespace bndigital {
+declare namespace bndigital {
   import {
     TypeScriptProject,
     TypeScriptProjectOptions,
@@ -13,7 +13,7 @@ namespace bndigital {
     defaultReleaseBranch: "latest",
   };
 
-  declare class Project extends TypeScriptProject {
+  class Project extends TypeScriptProject {
     constructor(options: ProjectOptions);
     linear: linear.ComponentOptions;
   }

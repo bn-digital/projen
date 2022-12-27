@@ -1,17 +1,30 @@
 namespace strapi {
-  import { typescript } from "projen";
+  import { javascript, typescript } from "projen";
 
   type DatabaseProvider = "sqlite" | "postgres" | "mysql";
   type EmailProvider = "nodemailer" | "mailgun" | "sendgrid";
-  interface StrapiOptions {
-    version: string;
-    dbProvider: DatabaseProvider[] | DatabaseProvider;
-    mailProvider: EmailProvider[] | EmailProvider;
-  }
-  export type ProjectOptions = typescript.TypeScriptProjectOptions & {
-    strapi: StrapiOptions;
+
+  type ProjectOptions = Omit<
+    typescript.TypeScriptProjectOptions,
+    "defaultReleaseBranch"
+  > & {
+    name: string;
+    strapiOptions: strapi.Options;
   };
-  class Project extends typescript.TypeScriptProject {
-    constructor(options: ProjectOptions);
+
+  interface Options {
+    version?: string;
+    users?: { enabled: boolean };
+    graphql?: {
+      enabled: boolean;
+      config?: {};
+    };
+    database?: {
+      client: DatabaseProvider;
+      config?: {};
+    };
+    email?: {
+      provider: EmailProvider;
+    };
   }
 }

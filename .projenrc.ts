@@ -1,6 +1,5 @@
-/// <reference types="./src/types" />
-
 import { cdk, javascript } from "projen";
+import { BndigitalProject, StrapiProject } from "./src";
 
 const project = new cdk.JsiiProject({
   author: "bndigital",
@@ -19,14 +18,19 @@ const project = new cdk.JsiiProject({
   packageName: "@bn-digital/projen",
   peerDeps: ["projen@0.65.72"],
   projenrcTs: true,
-  releaseBranches: { latest: { majorVersion: 1 } },
-  release: false,
-  buildWorkflow: true,
+  pullRequestTemplate: false,
+  depsUpgradeOptions: { workflowOptions: { runsOn: ["self-hosted"] } },
+  workflowRunsOn: ["self-hosted"],
+  githubOptions: { pullRequestLint: false },
   releaseToNpm: true,
+  docgen: false,
+  clobber: false,
   repositoryUrl: "https://github.com/bn-digital/projen.git",
   tsconfigDev: {
+    include: ["src/**/*.d.ts"],
     compilerOptions: {
       baseUrl: ".",
+      noUnusedLocals: false,
       rootDir: ".",
       moduleResolution: javascript.TypeScriptModuleResolution.NODE,
       allowSyntheticDefaultImports: true,
@@ -35,5 +39,24 @@ const project = new cdk.JsiiProject({
     },
   },
 });
+
+const strapiAuthPasswordlessSampleProject = new BndigitalProject({
+  name: "sample-strapi-auth-passwordless",
+  outdir: "samples/strapi-auth-passwordless",
+  parent: project,
+  packageName: "strapi-auth-passwordless",
+});
+
+const cms = new StrapiProject({
+  name: "cms",
+  parent: strapiAuthPasswordlessSampleProject,
+  strapiOptions: {
+    users: { enabled: true },
+    email: { provider: "nodemailer" },
+    version: "4.5.4",
+  },
+});
+cms.synth();
+
 project.packageTask.reset("npx projen package-all");
 project.synth();
