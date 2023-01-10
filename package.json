@@ -3,7 +3,7 @@
   "description": "Set of tools for building projects in bndigital",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bn-digital/projen.git"
+    "url": "https://github.com/bn-digital/projen"
   },
   "scripts": {
     "build": "npx projen build",
@@ -16,37 +16,42 @@
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
     "post-compile": "npx projen post-compile",
-    "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "release:latest": "npx projen release:latest",
     "test": "npx projen test",
     "unbump": "npx projen unbump",
-    "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
   "author": {
-    "name": "bndigital",
-    "email": "dev@bndigital.co",
+    "name": "bn-digital",
+    "url": "https://bndigital.co",
     "organization": true
   },
   "devDependencies": {
-    "@bn-digital/prettier-config": "^2.1.8",
-    "@types/node": "^14",
-    "jsii": "^1.72.0",
-    "jsii-diff": "^1.72.0",
-    "jsii-pacmak": "^1.72.0",
-    "npm-check-updates": "^16",
-    "projen": "0.65.72",
+    "@bn-digital/eslint-config": "^2.0.24",
+    "@bn-digital/prettier-config": "^2.1.9",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18",
+    "jsii": "^1.73.0",
+    "jsii-diff": "^1.73.0",
+    "jsii-pacmak": "^1.73.0",
+    "lint-staged": "^13.1.0",
+    "lodash": "^4.17.21",
+    "projen": "0.66.10",
     "standard-version": "^9",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "typescript": "4.9.4",
+    "vite": "^4.0.4"
   },
   "peerDependencies": {
-    "projen": "0.65.72"
+    "projen": "0.66.10"
+  },
+  "engines": {
+    "node": ">= 18.0.0"
   },
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "UNLICENSED",
   "publishConfig": {
     "access": "public"
   },
@@ -60,6 +65,21 @@
       "outDir": "lib",
       "rootDir": "src"
     }
+  },
+  "prettier": "@bn-digital/prettier-config",
+  "eslintConfig": {
+    "extends": "@bn-digital/eslint-config/typescript"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,less,graphql}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.less": [
+      "stylelint --fix"
+    ]
   },
   "pnpm": {
     "overrides": {

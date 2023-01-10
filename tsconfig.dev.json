@@ -7,8 +7,7 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "es2020",
-      "DOM"
+      "es2019"
     ],
     "module": "CommonJS",
     "noEmitOnError": false,
@@ -16,7 +15,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "strict": true,
@@ -25,20 +24,13 @@
     "stripInternal": true,
     "target": "ES2019",
     "baseUrl": ".",
-    "rootDir": ".",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@bn-digital/projen/*": [
-        "./src/*"
-      ]
-    }
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     ".projenrc.js",
     "src/**/*.ts",
     "test/**/*.ts",
-    "src/**/*.d.ts",
+    "./resources/**/*.ejs",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],

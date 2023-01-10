@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/projen.iml" filepath="$PROJECT_DIR$/.idea/projen.iml" />
-      <module fileurl="file://$PROJECT_DIR$/samples/strapi-auth-passwordless/strapi-auth-passwordless.iml" filepath="$PROJECT_DIR$/samples/strapi-auth-passwordless/strapi-auth-passwordless.iml" />
     </modules>
   </component>
 </project>

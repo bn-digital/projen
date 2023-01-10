@@ -1,0 +1,4 @@
+# syntax=docker/dockerfile:latest
+ARG version=<%=tag%>
+FROM <%= image %>:${version}
+COPY . .
