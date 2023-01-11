@@ -1,3 +1,5 @@
+import { NpmAccess } from 'projen/lib/javascript'
+
 import { BrandNewProject, BrandNewProjectOptions } from '../brand-new'
 import { ReactOptions, ReactProject } from '../react'
 import { StrapiOptions, StrapiProject } from '../strapi'
@@ -31,23 +33,25 @@ export class FullStackProject extends BrandNewProject {
     })
     const { name, ...commonOptions } = options
     this.packagesDir = options.packagesDir ?? 'packages'
-    if (options.react) {
+    if (options.react !== false) {
       new ReactProject({
         ...commonOptions,
         parent: this,
-        outdir: `${this.packagesDir}/wesite`,
+        outdir: `${this.packagesDir}/website`,
         editorconfig: false,
-        name: 'wesite',
+        name: 'website',
+        npmAccess: NpmAccess.RESTRICTED,
         packageName: `@${name}/website`,
         reactOptions: { ...options.reactOptions, version: '18.2.0' },
       })
     }
-    if (options.strapi) {
+    if (options.strapi !== false) {
       new StrapiProject({
         ...commonOptions,
         parent: this,
         outdir: `${this.packagesDir}/cms`,
         name: 'cms',
+        npmAccess: NpmAccess.RESTRICTED,
         packageName: `@${options.name}/cms`,
         strapiOptions: options.strapiOptions ?? {},
         editorconfig: false,
@@ -55,9 +59,8 @@ export class FullStackProject extends BrandNewProject {
     }
   }
 
-  preSynthesize() {
-    this.addDevDeps('handlebars')
+  synth() {
     this.tryFindObjectFile('pnpm-workspace.yaml')?.addOverride('packages', [`${this.packagesDir}/*`])
-    super.preSynthesize()
+    super.synth()
   }
 }

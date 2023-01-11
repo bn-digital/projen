@@ -9,10 +9,6 @@
       "type": "build"
     },
     {
-      "name": "@types/lodash",
-      "type": "build"
-    },
-    {
       "name": "@types/node",
       "version": "^18",
       "type": "build"
@@ -34,10 +30,6 @@
       "type": "build"
     },
     {
-      "name": "lodash",
-      "type": "build"
-    },
-    {
       "name": "projen",
       "type": "build"
     },
@@ -53,10 +45,6 @@
     {
       "name": "typescript",
       "version": "4.9.4",
-      "type": "build"
-    },
-    {
-      "name": "vite",
       "type": "build"
     },
     {

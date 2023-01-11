@@ -1,9 +1,12 @@
-import { readFileSync } from 'fs'
-import { template } from 'lodash'
-import { join } from 'path'
 import { FileBase, FileBaseOptions, Project } from 'projen'
 
 import { DockerOptions } from './index'
+
+const nodejsDockerfile = ({ tag, image }: DockerOptions) => `# syntax=docker/dockerfile:latest
+ARG version=${tag}
+FROM ${image}:$version
+COPY . .
+`
 
 export interface DockerFileOptions extends FileBaseOptions {
   readonly path: string
@@ -18,8 +21,6 @@ export class Dockerfile extends FileBase {
   }
 
   protected synthesizeContent(): string | undefined {
-    return template(readFileSync(join(__dirname, '..', '..', '..', 'resources', 'Dockerfile.ejs'), 'utf8').toString())(
-      this.options
-    )
+    return nodejsDockerfile({ image: this.options.image, tag: this.options.tag })
   }
 }

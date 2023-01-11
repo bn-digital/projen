@@ -127,8 +127,7 @@
       "name": "release:latest",
       "description": "Prepare a release from \"latest\" branch",
       "env": {
-        "RELEASE": "true",
-        "MAJOR": "0"
+        "RELEASE": "true"
       },
       "steps": [
         {

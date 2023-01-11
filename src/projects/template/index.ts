@@ -1,22 +1,18 @@
 import { basename } from 'path'
-import { javascript, typescript } from 'projen'
+import { cdk, javascript } from 'projen'
 
-import { docker, helm, ide } from '../../components'
+import { ide } from '../../components'
 
-export interface BrandNewProjectOptions
-  extends typescript.TypeScriptProjectOptions,
-    ide.IdeProjectOptions,
-    docker.DockerProjectOptions,
-    helm.HelmProjectOptions {
+export interface TemplateProjectOptions extends cdk.JsiiProjectOptions, ide.IdeProjectOptions {
   readonly private?: boolean
 }
 
 /**
- * @pjid brand-new
+ * @pjid template
  */
-export class BrandNewProject extends typescript.TypeScriptProject {
-  constructor(options: BrandNewProjectOptions) {
-    const mergedOptions = BrandNewProject.withDefaults(options)
+export class Template extends cdk.JsiiProject {
+  constructor(options: TemplateProjectOptions) {
+    const mergedOptions = Template.withDefaults(options)
     super(mergedOptions)
 
     this.preCompileTask.prependExec('eslint --fix src')
@@ -32,19 +28,23 @@ export class BrandNewProject extends typescript.TypeScriptProject {
       '*.less': ['stylelint --fix'],
     })
 
-    if (options?.docker) new docker.Docker(this, options.dockerOptions)
     if (options.editorconfig) new ide.Editorconfig(this)
-    if (options.helm) new helm.Helm(this, options.helmOptions)
   }
 
   private static withDefaults({
     name,
     eslint = false,
+    repositoryUrl = '',
+    author = 'bn-digital',
+    authorAddress = `https://github.com/bn-digital/${name}`,
     defaultReleaseBranch = 'latest',
     devDeps = [],
     ...options
-  }: BrandNewProjectOptions): BrandNewProjectOptions {
+  }: TemplateProjectOptions): TemplateProjectOptions {
     return {
+      author,
+      authorAddress,
+      authorOrganization: true,
       clobber: false,
       commitGenerated: false,
       defaultReleaseBranch,
@@ -61,7 +61,6 @@ export class BrandNewProject extends typescript.TypeScriptProject {
       ],
       disableTsconfig: true,
       docgen: false,
-      docker: false,
       editorconfig: true,
       eslint,
       github: true,
@@ -84,6 +83,7 @@ export class BrandNewProject extends typescript.TypeScriptProject {
       publishTasks: false,
       pullRequestTemplate: false,
       releaseToNpm: false,
+      repositoryUrl,
       sampleCode: false,
       typescriptVersion: '4.9.4',
       workflowRunsOn: ['self-hosted'],
@@ -97,16 +97,5 @@ export class BrandNewProject extends typescript.TypeScriptProject {
 
   postSynthesize() {
     super.postSynthesize()
-    this.tryFindObjectFile('tsconfig.json')?.addOverride('compilerOptions', {
-      skipDefaultLibCheck: true,
-      noUnusedParameters: false,
-      noUnusedLocals: false,
-      allowJs: false,
-    })
-    this.package.removeScript('compile')
-    this.package.removeScript('watch')
-    this.package.removeScript('test')
-    this.package.removeScript('eject')
-    this.package.addField('private', true)
   }
 }

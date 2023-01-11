@@ -1,25 +1,20 @@
 import { javascript } from 'projen'
-import { BrandNewProject } from './src'
+import { Template } from './src'
 
-const projenVersion = '0.66.10' as const
-
-const project = new BrandNewProject({
+const project = new Template({
+  author: 'bn-digital',
+  authorAddress: 'https://bndigital.co',
+  repositoryUrl: 'https://github.com/bn-digital/projen',
   authorOrganization: true,
   defaultReleaseBranch: 'latest',
   description: `Set of tools for building projects in bndigital`,
-  devDeps: [`projen@${projenVersion}`, 'vite'],
-  majorVersion: 0,
   name: 'projen',
   npmAccess: javascript.NpmAccess.PUBLIC,
   packageName: `@bn-digital/projen`,
-  tsconfig: {
-    compilerOptions: { baseUrl: '.', allowSyntheticDefaultImports: true },
-    include: ['./resources/**/*.ejs'],
-  },
   releaseToNpm: true,
+  sampleCode: false,
   dependabot: true,
 })
-project.addPackageIgnore('!/resources/')
 project.packageTask.reset('npx projen package-all')
 
 project.synth()
