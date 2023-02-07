@@ -1,46 +1,48 @@
-import { basename } from 'path'
-import { cdk, javascript } from 'projen'
+import {basename} from 'path';
+import {cdk, javascript} from 'projen';
 
-import { ide } from '../../components'
+import {ide} from '../../components';
 
 export interface TemplateProjectOptions extends cdk.JsiiProjectOptions, ide.IdeProjectOptions {
-  readonly private?: boolean
+  readonly private?: boolean;
 }
 
 /**
  * @pjid template
  */
 export class Template extends cdk.JsiiProject {
+  readonly editorconfig: ide.Editorconfig | undefined;
+
   constructor(options: TemplateProjectOptions) {
-    const mergedOptions = Template.withDefaults(options)
-    super(mergedOptions)
+    const mergedOptions = Template.withDefaults(options);
+    super(mergedOptions);
+    this.addPackageIgnore('!/assets/**');
+    this.preCompileTask.prependExec(
+        'npx eslint --fix src/**/*.{js,jsx,ts,tsx}');
+    this.preCompileTask.prependExec(
+        'npx prettier --write src/**/*.{js,jsx,ts,tsx,json,md,less,graphql}');
 
-    this.preCompileTask.prependExec('eslint --fix src')
-    this.preCompileTask.prependExec('prettier --write src')
-
-    this.package.addField('prettier', `@bn-digital/prettier-config`)
+    this.package.addField('private', true);
+    this.package.addField('prettier', `@bn-digital/prettier-config`);
     this.package.addField('eslintConfig', {
       extends: `@bn-digital/eslint-config/typescript`,
-    })
-    this.package.addField('lint-staged', {
-      '*.{js,jsx,ts,tsx,md,less,graphql}': ['prettier --write'],
-      '*.{js,jsx,ts,tsx}': ['eslint --fix'],
-      '*.less': ['stylelint --fix'],
-    })
+    });
+    this.package.addField('workspaces', ['packages/*']);
 
-    if (options.editorconfig) new ide.Editorconfig(this)
+    if (options.editorconfig) this.editorconfig = new ide.Editorconfig(this);
   }
 
   private static withDefaults({
-    name,
-    eslint = false,
-    repositoryUrl = '',
-    author = 'bn-digital',
-    authorAddress = `https://github.com/bn-digital/${name}`,
-    defaultReleaseBranch = 'latest',
-    devDeps = [],
-    ...options
-  }: TemplateProjectOptions): TemplateProjectOptions {
+                                name,
+                                eslint = false,
+                                repositoryUrl = '',
+                                author = 'bn-digital',
+                                authorAddress = `https://github.com/bn-digital/${name}`,
+                                defaultReleaseBranch = 'latest',
+                                packageName = `@${author}/${name}`,
+                                devDeps = [],
+                                ...options
+                              }: TemplateProjectOptions): TemplateProjectOptions {
     return {
       author,
       authorAddress,
@@ -49,7 +51,7 @@ export class Template extends cdk.JsiiProject {
       commitGenerated: false,
       defaultReleaseBranch,
       dependabot: false,
-      depsUpgrade: false,
+      depsUpgrade: true,
       devDeps: [
         '@bn-digital/prettier-config',
         '@bn-digital/eslint-config',
@@ -72,30 +74,25 @@ export class Template extends cdk.JsiiProject {
       },
       jest: false,
       licensed: false,
+      stale: true,
       minNodeVersion: '18.0.0',
       name: name ?? basename(process.cwd()),
       npmignoreEnabled: false,
+      packageName,
       packageManager: javascript.NodePackageManager.PNPM,
       peerDeps: ['projen'],
       prettier: false,
-      projenVersion: '0.66.11',
+      projenVersion: '0.67.32',
       projenrcTs: true,
       publishTasks: false,
       pullRequestTemplate: false,
       releaseToNpm: false,
       repositoryUrl,
       sampleCode: false,
-      typescriptVersion: '4.9.4',
+      typescriptVersion: '4.9.5',
       workflowRunsOn: ['self-hosted'],
       ...options,
-    }
+    };
   }
 
-  preSynthesize() {
-    super.preSynthesize()
-  }
-
-  postSynthesize() {
-    super.postSynthesize()
-  }
 }

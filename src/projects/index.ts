@@ -1,6 +1,7 @@
 export * from './brand-new'
 export * from './full-stack'
 export * from './html'
+export * from './next'
 export * from './react'
 export * from './strapi'
 export * from './template'

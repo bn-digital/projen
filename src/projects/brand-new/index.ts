@@ -1,11 +1,13 @@
-import { basename } from 'path'
+import { basename } from 'node:path'
+
 import { javascript, typescript } from 'projen'
 
-import { docker, helm, ide } from '../../components'
+import { docker, graphql, helm, ide } from '../../components'
 
 export interface BrandNewProjectOptions
   extends typescript.TypeScriptProjectOptions,
     ide.IdeProjectOptions,
+    graphql.GraphqlProjectOptions,
     docker.DockerProjectOptions,
     helm.HelmProjectOptions {
   readonly private?: boolean
@@ -15,12 +17,12 @@ export interface BrandNewProjectOptions
  * @pjid brand-new
  */
 export class BrandNewProject extends typescript.TypeScriptProject {
+  readonly docker: docker.Docker | undefined
+  readonly editorconfig: ide.Editorconfig | undefined
+  readonly helm: helm.Helm | undefined
+  readonly graphql: graphql.Graphql | undefined
   constructor(options: BrandNewProjectOptions) {
-    const mergedOptions = BrandNewProject.withDefaults(options)
-    super(mergedOptions)
-
-    this.preCompileTask.prependExec('eslint --fix src')
-    this.preCompileTask.prependExec('prettier --write src')
+    super(BrandNewProject.withDefaults(options))
 
     this.package.addField('prettier', `@bn-digital/prettier-config`)
     this.package.addField('eslintConfig', {
@@ -31,25 +33,28 @@ export class BrandNewProject extends typescript.TypeScriptProject {
       '*.{js,jsx,ts,tsx}': ['eslint --fix'],
       '*.less': ['stylelint --fix'],
     })
+    this.package.addField('private', true)
 
-    if (options?.docker) new docker.Docker(this, options.dockerOptions)
-    if (options.editorconfig) new ide.Editorconfig(this)
-    if (options.helm) new helm.Helm(this, options.helmOptions)
+    if (options.docker) this.docker = new docker.Docker(this)
+    if (options.editorconfig) this.editorconfig = new ide.Editorconfig(this)
+    if (options.helm) this.helm = new helm.Helm(this, options.helmOptions)
+    if (options.graphql) this.graphql = new graphql.Graphql(this, options.graphqlOptions)
   }
 
-  private static withDefaults({
+  protected static readonly withDefaults: (options: Partial<BrandNewProjectOptions>) => BrandNewProjectOptions = ({
     name,
     eslint = false,
     defaultReleaseBranch = 'latest',
     devDeps = [],
     ...options
-  }: BrandNewProjectOptions): BrandNewProjectOptions {
+  }) => {
     return {
       clobber: false,
       commitGenerated: false,
       defaultReleaseBranch,
       dependabot: false,
       depsUpgrade: false,
+      package: false,
       devDeps: [
         '@bn-digital/prettier-config',
         '@bn-digital/eslint-config',
@@ -79,13 +84,14 @@ export class BrandNewProject extends typescript.TypeScriptProject {
       packageManager: javascript.NodePackageManager.PNPM,
       peerDeps: ['projen'],
       prettier: false,
-      projenVersion: '0.66.11',
+      projenVersion: '0.67.34',
       projenrcTs: true,
       publishTasks: false,
       pullRequestTemplate: false,
       releaseToNpm: false,
-      sampleCode: false,
-      typescriptVersion: '4.9.4',
+      sampleCode: true,
+      stale: false,
+      typescriptVersion: '4.9.5',
       workflowRunsOn: ['self-hosted'],
       ...options,
     }
@@ -93,20 +99,41 @@ export class BrandNewProject extends typescript.TypeScriptProject {
 
   preSynthesize() {
     super.preSynthesize()
-  }
+    const defaultTask = this.tasks.tryFind('default')
 
-  postSynthesize() {
-    super.postSynthesize()
-    this.tryFindObjectFile('tsconfig.json')?.addOverride('compilerOptions', {
-      skipDefaultLibCheck: true,
-      noUnusedParameters: false,
-      noUnusedLocals: false,
-      allowJs: false,
-    })
-    this.package.removeScript('compile')
+    defaultTask?.reset('ts-node --skip-project .projenrc.ts')
+    defaultTask?.prependExec('yarn set version berry')
+    defaultTask?.exec('yarn')
+
+    this.gitignore.addPatterns(
+      '.yarn/*',
+      '!.yarn/releases',
+      '!.yarn/plugins',
+      '!.yarn/sdks',
+      '!.yarn/versions',
+      '.pnp.*'
+    )
+
+    this.package.addField('workspaces', ['packages/*'])
+    const yarnrc = this.tryFindObjectFile('.yarnrc')
+    yarnrc?.addOverride('nodeLinker', 'node-modules')
+    yarnrc?.addOverride('enableGlobalCache', true)
+    yarnrc?.addOverride('preferAggregateCacheInfo', true)
+    yarnrc?.addOverride('nmHoistingLimits', 'workspaces')
+
+    this.preCompileTask.prependExec('npx eslint --fix src/**/*.{js,jsx,ts,tsx}')
+    this.preCompileTask.prependExec('npx prettier --write src/**/*.{js,jsx,ts,tsx,json,md,less,graphql}')
+
     this.package.removeScript('watch')
     this.package.removeScript('test')
     this.package.removeScript('eject')
-    this.package.addField('private', true)
+  }
+
+  postSynthesize() {
+    if (this.parent) {
+      this.logger.info("Skipping 'pnpm install' as it is managed by parent project")
+    } else {
+      super.postSynthesize()
+    }
   }
 }

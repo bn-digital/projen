@@ -1,4 +1,5 @@
 export * as docker from './docker'
+export * as graphql from './graphql'
 export * as helm from './helm'
 export * as ide from './ide'
 export * as vite from './vite'

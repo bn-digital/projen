@@ -1,9 +1,6 @@
-import { javascript, Project } from 'projen'
-
 import { BrandNewProject, BrandNewProjectOptions } from '../brand-new'
 
 const defaultOptions: StrapiOptions = {
-  version: '4.5.4',
   users: {
     enabled: true,
   },
@@ -44,19 +41,6 @@ export interface StrapiProjectOptions extends BrandNewProjectOptions {
   readonly strapiOptions?: StrapiOptions
 }
 
-export class Index extends javascript.NodePackage {
-  readonly options: StrapiOptions
-
-  constructor(project: Project, options: StrapiOptions) {
-    super(project)
-    this.options = options
-  }
-
-  preSynthesize() {
-    super.preSynthesize()
-  }
-}
-
 /**
  * @pjid strapi
  */
@@ -72,7 +56,7 @@ export class StrapiProject extends BrandNewProject {
       ...options,
       deps: [
         ...(options?.deps ?? []),
-        ...StrapiProject._resolveDefaultDeps(strapiOptions),
+        ...StrapiProject._resolveDefaultDeps(),
         ...StrapiProject._resolveEmailDeps(strapiOptions),
         ...StrapiProject._resolveDatabaseDeps(strapiOptions),
         ...StrapiProject._resolveUsersDeps(strapiOptions),
@@ -82,14 +66,14 @@ export class StrapiProject extends BrandNewProject {
     })
   }
 
-  private static _resolveDefaultDeps(options: StrapiOptions): string[] {
+  private static _resolveDefaultDeps(): string[] {
     return [
-      `@strapi/strapi@${options?.version}`,
-      `@strapi/database@${options?.version}`,
-      `@strapi/plugin-graphql@${options?.version}`,
-      `@strapi/plugin-content-manager@${options?.version}`,
-      `@strapi/plugin-content-type-builder@${options?.version}`,
-      `@strapi/typescript-utils@${options?.version}`,
+      `@strapi/strapi`,
+      `@strapi/database`,
+      `@strapi/plugin-graphql`,
+      `@strapi/plugin-content-manager`,
+      `@strapi/plugin-content-type-builder`,
+      `@strapi/typescript-utils`,
       `strapi-plugin-config-sync`,
     ]
   }
@@ -103,17 +87,14 @@ export class StrapiProject extends BrandNewProject {
       case 'sendgrid':
       case 'mailgun':
       case 'nodemailer':
-        return [
-          `@strapi/provider-email-${options.email?.provider}@${options?.version}`,
-          `@bn-digital/strapi-plugin-email-emitter`,
-        ]
+        return [`@strapi/provider-email-${options.email?.provider}`, `@bn-digital/strapi-plugin-email-emitter`]
       default:
         return []
     }
   }
 
   private static _resolveUsersDeps(options: StrapiOptions): string[] {
-    return options?.users?.enabled ? [`@strapi/plugin-users-permissions@${options?.version}`] : []
+    return options?.users?.enabled ? [`@strapi/plugin-users-permissions`] : []
   }
 
   private static _resolveDatabaseDeps(options: StrapiOptions): string[] {

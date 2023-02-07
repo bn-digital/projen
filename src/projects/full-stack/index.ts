@@ -1,11 +1,16 @@
-import { NpmAccess } from 'projen/lib/javascript'
+import * as path from 'node:path'
+
+import { javascript, SampleFile } from 'projen'
 
 import { BrandNewProject, BrandNewProjectOptions } from '../brand-new'
+import { NextOptions, NextProject } from '../next'
 import { ReactOptions, ReactProject } from '../react'
 import { StrapiOptions, StrapiProject } from '../strapi'
 
 export interface FullStackProjectOptions extends BrandNewProjectOptions {
   readonly dockerCompose?: boolean
+  readonly next?: boolean
+  readonly nextOptions?: NextOptions
   readonly packagesDir?: string
   readonly react?: boolean
   readonly reactOptions?: ReactOptions
@@ -17,50 +22,63 @@ export interface FullStackProjectOptions extends BrandNewProjectOptions {
  * @pjid full-stack
  */
 export class FullStackProject extends BrandNewProject {
-  readonly packagesDir: string
-
   constructor(options: FullStackProjectOptions) {
     super({
       repository: `https://bn-digital/bn-digital/${options.name}`,
       docker: true,
-      dockerOptions: { image: 'dcr.bndigital.dev/library/nodejs', tag: '2.12.0' },
       packageName: options.name,
       sampleCode: false,
       eslint: false,
       prettier: false,
       jest: false,
+      graphql: true,
+      graphqlOptions: { config: true },
       ...options,
     })
+    if (this.package.packageManager === javascript.NodePackageManager.PNPM) {
+      new SampleFile(this, 'pnpm-workspace.yaml', {
+        sourcePath: path.join(__dirname, '..', '..', '..', 'assets', 'pnpm-workspace.yaml'),
+      }).synthesize()
+    }
     const { name, ...commonOptions } = options
-    this.packagesDir = options.packagesDir ?? 'packages'
     if (options.react !== false) {
       new ReactProject({
         ...commonOptions,
         parent: this,
-        outdir: `${this.packagesDir}/website`,
+        outdir: `packages/website`,
         editorconfig: false,
+        package: false,
         name: 'website',
-        npmAccess: NpmAccess.RESTRICTED,
+        npmAccess: javascript.NpmAccess.RESTRICTED,
         packageName: `@${name}/website`,
         reactOptions: { ...options.reactOptions, version: '18.2.0' },
+        graphql: true,
+        graphqlOptions: { codegen: true },
+      })
+    } else if (options.next !== false) {
+      new NextProject({
+        ...commonOptions,
+        parent: this,
+        package: false,
+        outdir: `packages/website`,
+        editorconfig: false,
+        name: 'website',
+        npmAccess: javascript.NpmAccess.RESTRICTED,
+        packageName: `@${name}/website`,
       })
     }
     if (options.strapi !== false) {
       new StrapiProject({
         ...commonOptions,
         parent: this,
-        outdir: `${this.packagesDir}/cms`,
+        outdir: `packages/cms`,
+        package: false,
         name: 'cms',
-        npmAccess: NpmAccess.RESTRICTED,
+        npmAccess: javascript.NpmAccess.RESTRICTED,
         packageName: `@${options.name}/cms`,
         strapiOptions: options.strapiOptions ?? {},
         editorconfig: false,
       })
     }
-  }
-
-  synth() {
-    this.tryFindObjectFile('pnpm-workspace.yaml')?.addOverride('packages', [`${this.packagesDir}/*`])
-    super.synth()
   }
 }

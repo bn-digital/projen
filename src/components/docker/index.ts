@@ -1,6 +1,7 @@
-import { Component, Project } from 'projen'
+import { join } from 'path'
+import { Component, Project, SampleFile } from 'projen'
 
-import { Dockerfile } from './dockerfile'
+import { FullStackProject, ReactProject, StrapiProject } from '../../projects'
 import { DockerIgnoreFile } from './dockerignore'
 
 export interface DockerOptions {
@@ -15,16 +16,15 @@ export interface DockerProjectOptions {
 }
 
 export class Docker extends Component {
-  readonly options: DockerOptions
-  constructor(project: Project, options: DockerOptions = { path: 'Dockerfile' }) {
+  constructor(project: Project) {
     super(project)
-    this.options = { ...this.defaultOptions, ...options }
-    project.files.push(new Dockerfile(this.project, this.options), new DockerIgnoreFile(this.project))
-  }
-
-  get defaultOptions(): DockerOptions {
-    return {
-      image: 'node',
-    }
+    const dockerfile = 'Dockerfile'
+    if (project instanceof FullStackProject) dockerfile.concat('.full-stack')
+    if (project instanceof StrapiProject) dockerfile.concat('.cms')
+    if (project instanceof ReactProject) dockerfile.concat('.website')
+    new SampleFile(project, 'Dockerfile', {
+      sourcePath: join(__dirname, '..', '..', '..', 'assets', 'docker', dockerfile),
+    })
+    new DockerIgnoreFile(project)
   }
 }
