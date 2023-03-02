@@ -57,7 +57,7 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "0.4.18",
+  "version": "0.0.0",
   "types": "lib/index.d.ts",
   "stability": "stable",
   "jsii": {
@@ -68,7 +68,7 @@
       "rootDir": "src"
     }
   },
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
