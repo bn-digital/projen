@@ -30,6 +30,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+.env
 !/.projenrc.js
 !/.github/workflows/build.yml
 /dist/changelog.md
@@ -45,4 +46,5 @@ jspm_packages/
 .jsii
 tsconfig.json
 !/API.md
+.yarn/install-state.gz
 /.yarnrc.yml

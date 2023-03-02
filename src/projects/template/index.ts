@@ -37,6 +37,7 @@ export class Template extends cdk.JsiiProject {
     if (this.package.packageManager === javascript.NodePackageManager.YARN2) {
       const yarnVersion = "4.0.0-rc.39";
       this.defaultTask?.prependExec(`yarn set version ${yarnVersion}`);
+      this.gitignore.addPatterns(".yarn/install-state.gz");
       this.files.push(
         new YamlFile(this, ".yarnrc.yml", {
           readonly: false,
@@ -109,6 +110,7 @@ export class Template extends cdk.JsiiProject {
         }),
         ...options.githubOptions,
       },
+      gitignore: [".env"],
       jest: false,
       licensed: openSourced,
       license: openSourced ? "MIT" : undefined,
