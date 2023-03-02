@@ -24,7 +24,8 @@ export class Graphql extends Component {
     if (mergedOptions.config) {
       new SampleFile(project, '.graphqlconfig', {
         sourcePath: path.join(__dirname, '..', '..', '..', 'assets', 'graphql', '.graphqlconfig'),
-      })}
+      })
+    }
   }
 
   private static withDefaults(options: GraphqlOptions): GraphqlOptions {

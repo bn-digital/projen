@@ -9,8 +9,12 @@
       "type": "build"
     },
     {
+      "name": "@bn-digital/typescript-config",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
-      "version": "^18",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -22,11 +26,20 @@
       "type": "build"
     },
     {
+      "name": "jsii-docgen",
+      "type": "build"
+    },
+    {
       "name": "jsii-pacmak",
       "type": "build"
     },
     {
       "name": "lint-staged",
+      "type": "build"
+    },
+    {
+      "name": "npm-check-updates",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -44,7 +57,7 @@
     },
     {
       "name": "typescript",
-      "version": "4.9.4",
+      "version": "latest",
       "type": "build"
     },
     {

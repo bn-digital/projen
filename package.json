@@ -11,6 +11,7 @@
     "compat": "npx projen compat",
     "compile": "npx projen compile",
     "default": "npx projen default",
+    "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
@@ -18,6 +19,8 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
+    "publish:github:latest": "npx projen publish:github:latest",
+    "publish:npm:latest": "npx projen publish:npm:latest",
     "release:latest": "npx projen release:latest",
     "test": "npx projen test",
     "unbump": "npx projen unbump",
@@ -27,38 +30,34 @@
   },
   "author": {
     "name": "bn-digital",
-    "url": "https://bndigital.co",
+    "url": "https://github.com/bn-digital",
     "organization": true
   },
-  "dependencies": {
-    "commander": "^10.0.0"
-  },
   "devDependencies": {
-    "@bn-digital/eslint-config": "^2.0.30",
-    "@bn-digital/prettier-config": "^2.1.10",
-    "@types/node": "^18",
-    "jsii": "^1.74.0",
-    "jsii-diff": "^1.74.0",
-    "jsii-pacmak": "^1.74.0",
-    "lint-staged": "^13.1.0",
+    "@bn-digital/eslint-config": "^2.0.31",
+    "@bn-digital/prettier-config": "^2.1.11",
+    "@bn-digital/typescript-config": "^1.2.4",
+    "@types/node": "^16",
+    "jsii": "^1.76.0",
+    "jsii-diff": "^1.76.0",
+    "jsii-docgen": "^7.1.13",
+    "jsii-pacmak": "^1.76.0",
+    "lint-staged": "^13.1.2",
     "npm-check-updates": "^16",
-    "projen": "^0.67.36",
+    "projen": "0.67.70",
     "standard-version": "^9",
     "ts-node": "^10.9.1",
-    "typescript": "4.9.5"
+    "typescript": "latest"
   },
   "peerDependencies": {
-    "projen": "0.67.36"
+    "projen": "^0.67.70"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 16.0.0"
   },
   "main": "lib/index.js",
-  "license": "UNLICENSED",
-  "publishConfig": {
-    "access": "public"
-  },
-  "version": "0.0.0",
+  "license": "MIT",
+  "version": "0.4.18",
   "types": "lib/index.d.ts",
   "stability": "stable",
   "jsii": {
@@ -69,11 +68,7 @@
       "rootDir": "src"
     }
   },
-  "private": true,
-  "prettier": "@bn-digital/prettier-config",
-  "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/typescript"
-  },
+  "private": false,
   "workspaces": [
     "packages/*"
   ],

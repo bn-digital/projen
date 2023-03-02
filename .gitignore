@@ -3,7 +3,10 @@
 !/.projen/tasks.json
 !/.projen/deps.json
 !/.projen/files.json
+!/.github/workflows/pull-request-lint.yml
 !/package.json
+!/LICENSE
+/.npmignore
 logs
 *.log
 npm-debug.log*
@@ -28,9 +31,12 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
+!/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
-!/.github/dependabot.yml
+!/.github/workflows/release.yml
+!/.mergify.yml
+!/.github/workflows/upgrade-latest.yml
 !/test/
 /tsconfig.dev.json
 !/src/
@@ -38,3 +44,5 @@ jspm_packages/
 /dist/
 .jsii
 tsconfig.json
+!/API.md
+/.yarnrc.yml

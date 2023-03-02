@@ -3,6 +3,7 @@
 permissions-backup.acl
 /dist/changelog.md
 /dist/version.txt
+/.mergify.yml
 /test/
 /tsconfig.dev.json
 /src/
@@ -17,20 +18,4 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 !.jsii
-!/assets/
-
-
-# Exclude jsii outdir
-dist
-
-# Include .jsii and .jsii.gz
-!.jsii
-!.jsii.gz
-
-
-# Exclude jsii outdir
-dist
-
-# Include .jsii and .jsii.gz
-!.jsii
-!.jsii.gz
+!/assets/**

@@ -29,7 +29,7 @@ export class ReactProject extends BrandNewProject {
 
   private readonly withDefaults = (options: ReactOptions) => {
     return {
-      ...BrandNewProject.withDefaults({}),
+      ...BrandNewProject._withDefaults({}),
       antd: true,
       router: true,
       version: '18.2.0',

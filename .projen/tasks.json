@@ -64,13 +64,19 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "yarn set version berry"
+          "exec": "yarn set version 4.0.0-rc.39"
         },
         {
           "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
-        },
+        }
+      ]
+    },
+    "docgen": {
+      "name": "docgen",
+      "description": "Generate API.md from .jsii manifest",
+      "steps": [
         {
-          "exec": "yarn"
+          "exec": "jsii-docgen -o API.md"
         }
       ]
     },
@@ -115,7 +121,12 @@
     },
     "post-compile": {
       "name": "post-compile",
-      "description": "Runs after successful compilation"
+      "description": "Runs after successful compilation",
+      "steps": [
+        {
+          "spawn": "docgen"
+        }
+      ]
     },
     "post-upgrade": {
       "name": "post-upgrade",
@@ -123,13 +134,41 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation",
+      "description": "Prepare the project for compilation"
+    },
+    "publish:github:latest": {
+      "name": "publish:github:latest",
+      "description": "Publish this package to GitHub Releases",
+      "requiredEnv": [
+        "GITHUB_TOKEN",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REF"
+      ],
       "steps": [
         {
-          "exec": "npx prettier --write src/**/*.{js,jsx,ts,tsx,json,md,less,graphql}"
+          "exec": "test \"$(git branch --show-current)\" = \"latest\""
         },
         {
-          "exec": "npx eslint --fix src/**/*.{js,jsx,ts,tsx}"
+          "exec": "errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \"Release.tag_name already exists\" $errout; then cat $errout; exit $exitcode; fi"
+        }
+      ]
+    },
+    "publish:npm:latest": {
+      "name": "publish:npm:latest",
+      "description": "Publish this package to npm",
+      "env": {
+        "NPM_DIST_TAG": "latest",
+        "NPM_REGISTRY": "registry.npmjs.org"
+      },
+      "requiredEnv": [
+        "NPM_TOKEN"
+      ],
+      "steps": [
+        {
+          "exec": "test \"$(git branch --show-current)\" = \"latest\""
+        },
+        {
+          "exec": "npx -p publib@latest publib-npm"
         }
       ]
     },
@@ -203,7 +242,7 @@
           "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='typescript'"
         },
         {
-          "exec": "yarn install --check-files"
+          "exec": "yarn install"
         },
         {
           "exec": "yarn upgrade"
