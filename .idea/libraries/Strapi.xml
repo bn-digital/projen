@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Strapi" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../project-templates/packages/cms/node_modules/@strapi/strapi/ee" />
+        <item url="file://$PROJECT_DIR$/../project-templates/packages/cms/node_modules/@strapi/strapi/lib" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../project-templates/packages/cms/node_modules/@strapi/strapi/ee" />
+      <root url="file://$PROJECT_DIR$/../project-templates/packages/cms/node_modules/@strapi/strapi/lib" />
+    </CLASSES>
+    <DOCUMENTATION>
+      <root url="https://github.com/strapi/documentation/blob/main/docusaurus/docs/user-docs/intro.md" />
+    </DOCUMENTATION>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,5 +1,4 @@
-import { Component, IniFile, IResolver, Project } from 'projen'
-import { NodeProject } from 'projen/lib/javascript'
+import { Component, IniFile, IResolver, Project } from "projen"
 
 // language=Editorconfig
 const DEFAULT_CONTENT = `
@@ -24,17 +23,40 @@ ij_typescript_import_sort_module_name = true
 ij_typescript_import_merge_members = true
 ij_typescript_file_name_style = mixed`
 
-export interface IdeProjectOptions {
+export interface IdeOptions {
   readonly editorconfig?: boolean
 }
+
+export interface IdeProjectOptions {
+  readonly ide?: IdeOptions
+}
+
+export interface LintersProjectOptions {
+  readonly linters?: LintersOptions
+}
+
 export interface LintersOptions {
+  /**
+   * @default true
+   */
   readonly eslint?: boolean
+  /**
+   * @default true
+   */
   readonly stylelint?: boolean
+  /**
+   * @default true
+   */
   readonly prettier?: boolean
 }
+
 export class Editorconfig extends IniFile {
   constructor(project: Project) {
-    super(project, '.editorconfig', { omitEmpty: true, editGitignore: false, marker: true })
+    super(project, ".editorconfig", {
+      omitEmpty: true,
+      editGitignore: false,
+      marker: true,
+    })
   }
 
   protected synthesizeContent(resolver: IResolver): string | undefined {
@@ -43,7 +65,7 @@ export class Editorconfig extends IniFile {
 }
 
 export class Ide extends Component {
-  constructor(project: Project, options: IdeProjectOptions) {
+  constructor(project: Project, options: IdeOptions) {
     super(project)
     if (options.editorconfig) new Editorconfig(project)
   }
@@ -51,25 +73,36 @@ export class Ide extends Component {
 
 export class Linters extends Component {
   readonly eslint?: boolean
+  readonly stylelint?: boolean
   readonly prettier?: boolean
-  constructor(project: NodeProject, options: LintersOptions) {
+
+  constructor(project: Project, options: LintersOptions) {
     super(project)
     this.eslint = options.eslint
     this.prettier = options.prettier
+    this.stylelint = options.stylelint
   }
 
   preSynthesize() {
     super.preSynthesize()
+    const packageFile = this.project.tryFindObjectFile("package.json")
     if (this.eslint) {
-      this.project
-        .tryFindObjectFile('package.json')
-        ?.addOverride('eslintConfig', { extends: '@bn-digital/eslint-config/typescript' })
-      this.project.preCompileTask.prependExec('npx eslint --fix --cache src/**/*.{js,jsx,ts,tsx}')
-      this.project.testTask?.prependExec('npx eslint --cache src/**/*.{js,jsx,ts,tsx}')
+      packageFile?.addOverride("eslintConfig", {
+        extends: "@bn-digital/eslint-config/typescript",
+      })
+      this.project.preCompileTask.prependExec("npx eslint --fix --cache src/**/*.{js,jsx,ts,tsx}")
+      this.project.testTask?.steps.push({ exec: "npx eslint --cache src/**/*.{js,jsx,ts,tsx}" })
     }
     if (this.prettier) {
-      this.project.tryFindObjectFile('package.json')?.addOverride('prettier', '@bn-digital/prettier-config')
-      this.project.preCompileTask.prependExec('npx prettier --write src/**/*')
+      packageFile?.addOverride("prettier", "@bn-digital/prettier-config")
+      this.project.testTask?.steps.push({ exec: "npx prettier --write src/**/*" })
+    }
+
+    if (this.stylelint) {
+      packageFile?.addOverride("stylelint", { extends: "@bn-digital/stylelint-config" })
+      this.project.testTask?.steps.push({
+        exec: `yarn stylelint --fix ${this.project.parent ? "." : "packages/*"}/src/**/*.{scss,sass,less,css}`,
+      })
     }
   }
 }

@@ -1,5 +1,5 @@
-import * as path from 'path'
-import { Component, DependencyType, Project, SampleFile } from 'projen'
+import * as path from "path"
+import { Component, DependencyType, Project, SampleFile } from "projen"
 
 export interface GraphqlOptions {
   readonly codegen?: boolean
@@ -7,8 +7,7 @@ export interface GraphqlOptions {
 }
 
 export interface GraphqlProjectOptions {
-  readonly graphql?: boolean
-  readonly graphqlOptions?: GraphqlOptions
+  readonly graphql?: GraphqlOptions
 }
 
 export class Graphql extends Component {
@@ -16,14 +15,14 @@ export class Graphql extends Component {
     super(project)
     const mergedOptions = Graphql.withDefaults(options)
     if (mergedOptions.codegen) {
-      project.deps.addDependency('@bn-digital/graphql-config', DependencyType.DEVENV)
-      new SampleFile(project, 'codegen.yml', {
-        sourcePath: path.join(__dirname, '..', '..', '..', 'assets', 'graphql', 'codegen.yml'),
+      project.deps.addDependency("@bn-digital/graphql-config", DependencyType.DEVENV)
+      new SampleFile(project, "codegen.yml", {
+        sourcePath: path.join(process.cwd(), "assets", "graphql", "codegen.yml"),
       })
     }
     if (mergedOptions.config) {
-      new SampleFile(project, '.graphqlconfig', {
-        sourcePath: path.join(__dirname, '..', '..', '..', 'assets', 'graphql', '.graphqlconfig'),
+      new SampleFile(project, ".graphqlconfig", {
+        sourcePath: path.join(process.cwd(), "assets", "graphql", ".graphqlconfig"),
       })
     }
   }

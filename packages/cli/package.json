@@ -1,11 +1,36 @@
 {
   "name": "@bn-digital/cli",
+  "description": "BN Digital CLI tool",
+  "version": "1.0.8",
+  "bin": {
+    "bn": "./bin/bn.js"
+  },
+  "main": "./dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "prettier": "@bn-digital/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@bn-digital/eslint-config/typescript"
+    ]
+  },
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^10.0.0",
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.2.5"
   },
   "devDependencies": {
-    "@types/inquirer": "^9.0.3",
-    "typescript": "^4.9.5"
+    "@types/inquirer": "^8.2.6",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "publish": "yarn build && yarn npm publish",
+    "start": "yarn build && node bin/bn.js lint env,packages"
   }
 }

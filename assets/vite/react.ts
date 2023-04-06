@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 const config = configureReact(
   {},
   {
-    lint: { enabled: {{ lintersEnabled }}) },
+    lint: { enabled: true },
     react: { graphql: {{ graphqlEnabled }} },
     analytics: { enableDev: false },
     fonts: {

@@ -1,4 +1,4 @@
-import { BrandNewProject, BrandNewProjectOptions } from '../brand-new'
+import { BrandNewProject, BrandNewProjectOptions } from "../brand-new"
 
 export interface HtmlOptions {
   readonly stylesPreprocessor?: string

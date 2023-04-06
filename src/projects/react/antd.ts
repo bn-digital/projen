@@ -1,12 +1,13 @@
-import { Component, DependencyType, Project } from 'projen'
-
-export enum AntDesignVersion {
-  V4 = 'latest-4',
-  V5 = '^5.2.0',
-}
+import { Component, DependencyType, Project } from "projen"
 
 export interface AntDesignOptions {
+  readonly enabled?: boolean
   readonly version?: AntDesignVersion
+}
+
+export enum AntDesignVersion {
+  V4 = "latest-4",
+  V5 = "^5.3.3",
 }
 
 export class AntDesign extends Component {

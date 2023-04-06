@@ -1,4 +1,4 @@
-import { Component, Project } from 'projen'
+import { Component, Project } from "projen"
 
 export interface HelmChartRepositoryOptions {
   readonly name: string
@@ -35,16 +35,16 @@ export class Helm extends Component {
 
   defaultOptions(): HelmOptions {
     return {
-      chart: 'bn-digital/app',
+      chart: "bn-digital/app",
       release: this.project.name,
-      chartVersion: '2.1.0',
+      chartVersion: "2.1.0",
       repository: {
-        name: 'bn-digital',
-        url: 'https://bn-digital.github.io/helm',
+        name: "bn-digital",
+        url: "https://bn-digital.github.io/helm",
       },
       values: {
         image: {
-          tag: 'latest',
+          tag: "latest",
           repository: `dcr.bndigital.dev/${this.project.name}/app`,
         },
       },

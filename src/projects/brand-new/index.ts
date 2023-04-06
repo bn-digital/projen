@@ -1,138 +1,1 @@
-import { basename } from 'node:path'
-
-import { javascript, typescript } from 'projen'
-import { NodePackageManager } from 'projen/lib/javascript'
-
-import { docker, graphql, helm, ide } from '../../components'
-
-export interface BrandNewProjectOptions
-  extends typescript.TypeScriptProjectOptions,
-    ide.IdeProjectOptions,
-    graphql.GraphqlProjectOptions,
-    docker.DockerProjectOptions,
-    helm.HelmProjectOptions {
-  readonly private?: boolean
-}
-
-/**
- * @pjid brand-new
- */
-export class BrandNewProject extends typescript.TypeScriptProject {
-  readonly docker: docker.Docker | undefined
-  readonly ide: ide.Ide | undefined
-  readonly helm: helm.Helm | undefined
-  readonly graphql: graphql.Graphql | undefined
-
-  constructor(options: BrandNewProjectOptions) {
-    super(BrandNewProject._withDefaults(options))
-
-    this.package.addField('prettier', `@bn-digital/prettier-config`)
-    this.package.addField('eslintConfig', {
-      extends: `@bn-digital/eslint-config/typescript`,
-    })
-    this.package.addField('lint-staged', {
-      '*.{js,jsx,ts,tsx,md,less,graphql}': ['prettier --write'],
-      '*.{js,jsx,ts,tsx}': ['eslint --fix'],
-      '*.less': ['stylelint --fix'],
-    })
-    this.package.addField('private', options.private)
-
-    if (options.docker) this.docker = new docker.Docker(this)
-    if (options.editorconfig) this.ide = new ide.Ide(this, { editorconfig: options.editorconfig })
-    if (options.helm) this.helm = new helm.Helm(this, options.helmOptions)
-    if (options.graphql) this.graphql = new graphql.Graphql(this, options.graphqlOptions)
-  }
-
-  /**
-   * @internal
-   */
-  protected static readonly _withDefaults: (options: Partial<BrandNewProjectOptions>) => BrandNewProjectOptions = ({
-    name,
-    eslint = false,
-    defaultReleaseBranch = 'latest',
-    devDeps = [],
-    ...options
-  }) => {
-    return {
-      clobber: false,
-      commitGenerated: false,
-      defaultReleaseBranch,
-      dependabot: false,
-      depsUpgrade: false,
-      package: false,
-      devDeps: [
-        '@bn-digital/prettier-config',
-        '@bn-digital/eslint-config',
-        'lint-staged',
-        'ts-node',
-        'typescript',
-        'projen',
-        ...devDeps,
-      ],
-      disableTsconfig: true,
-      docgen: false,
-      docker: false,
-      editorconfig: true,
-      eslint,
-      github: true,
-      githubOptions: {
-        pullRequestLint: false,
-        mergify: false,
-        workflows: false,
-        ...options.githubOptions,
-      },
-      jest: false,
-      licensed: false,
-      minNodeVersion: '18.0.0',
-      name: name ?? basename(process.cwd()),
-      npmignoreEnabled: false,
-      packageManager: javascript.NodePackageManager.PNPM,
-      peerDeps: ['projen@0.67.66'],
-      prettier: false,
-      projenVersion: '0.67.66',
-      projenrcTs: true,
-      publishTasks: false,
-      pullRequestTemplate: false,
-      releaseToNpm: false,
-      sampleCode: true,
-      stale: false,
-      typescriptVersion: '4.9.5',
-      workflowRunsOn: ['self-hosted'],
-      ...options,
-    }
-  }
-
-  preSynthesize() {
-    super.preSynthesize()
-    if (this.package.packageManager === NodePackageManager.YARN2) {
-      this.gitignore.addPatterns(
-        '.yarn/*',
-        '!.yarn/releases',
-        '!.yarn/plugins',
-        '!.yarn/sdks',
-        '!.yarn/versions',
-        '.pnp.*'
-      )
-      this.package.addField('workspaces', ['packages/*'])
-      const yarnrc = this.tryFindObjectFile('.yarnrc')
-      yarnrc?.addOverride('nodeLinker', 'node-modules')
-      yarnrc?.addOverride('enableGlobalCache', true)
-      yarnrc?.addOverride('preferAggregateCacheInfo', true)
-      yarnrc?.addOverride('nmHoistingLimits', 'workspaces')
-    }
-    this.preCompileTask.prependExec('npx eslint --fix src/**/*.{js,jsx,ts,tsx}')
-    this.preCompileTask.prependExec('npx prettier --write src/**/*.{js,jsx,ts,tsx,json,md,less,graphql}')
-
-    this.package.removeScript('watch')
-    this.package.removeScript('test')
-    this.package.removeScript('eject')
-  }
-
-  postSynthesize() {
-    if (this.parent) {
-      this.logger.info("Skipping 'yarn install' as it is managed by parent project")
-    } else {
-      super.postSynthesize()
-    }
-  }
-}
+import { DependencyType, javascript, JsonFile, ObjectFile, Project, ProjectOptions, Task } from "projen"import { docker, graphql, helm, ide, node } from "../../components"export interface BrandNewProjectOptions  extends ProjectOptions,    docker.DockerProjectOptions,    ide.LintersProjectOptions,    ide.IdeProjectOptions,    graphql.GraphqlProjectOptions,    helm.HelmProjectOptions {  readonly deps?: string[]  readonly devDeps?: string[]  readonly packageManager?: javascript.NodePackageManager  readonly packageName?: string}/** * @pjid brand-new */export class BrandNewProject extends Project {  readonly docker: docker.Docker | undefined  readonly ide: ide.Ide | undefined  readonly helm: helm.Helm | undefined  readonly graphql: graphql.Graphql | undefined  readonly linters: ide.Linters | undefined  readonly packageName?: string  readonly packageJson?: ObjectFile  readonly packageManager?: javascript.NodePackageManager  readonly yarn: node.Yarn | undefined  constructor(options: BrandNewProjectOptions) {    options = BrandNewProject._withDefaults(options)    super(options)    if (!this.tryFindObjectFile("package.json")) {      // fs.existsSync(path.join(process.cwd(), "package.json")) && fs.unlinkSync(path.join(process.cwd(), "package.json"))      this.packageJson = new JsonFile(this, "package.json", {        obj: {          "//": '~~ Generated by projen. To modify, edit .projenrc.json and run "yarn projen".',        },      })    }    this.packageJson = this.tryFindObjectFile("package.json")    options.deps?.forEach(it => this.deps.addDependency(it, DependencyType.RUNTIME))    options.devDeps?.forEach(it => this.deps.addDependency(it, DependencyType.DEVENV))    if (options.linters) this.linters = new ide.Linters(this, options.linters)    if (options.docker) this.docker = new docker.Docker(this)    if (options.ide) this.ide = new ide.Ide(this, options.ide)    if (options.helm) this.helm = new helm.Helm(this, options.helmOptions)    if (options.graphql) this.graphql = new graphql.Graphql(this, options.graphql)    if (options.packageManager === javascript.NodePackageManager.YARN2 && !this.parent) this.yarn = new node.Yarn(this)    this.defaultTask?.spawn(this.installTask)  }  get installTask(): Task {    let task = this.root.tasks.tryFind("install")    if (!task) {      task = this.root.tasks.addTask("install")    }    return task  }  /**   * @internal   */  protected static _withDefaults<T extends BrandNewProjectOptions = BrandNewProjectOptions>({    name,    commitGenerated = false,    packageName = name,    deps = [],    devDeps = [],    packageManager = javascript.NodePackageManager.YARN2,    parent,    projenCommand = "yarn projen",    projenrcJson = true,    ...options  }: T): T {    return {      commitGenerated,      deps,      devDeps: [        ...(!parent ? ["@bn-digital/projen", "@bn-digital/typescript-config", "ts-node", "typescript", "projen"] : []),        ...(!options.linters          ? ["@bn-digital/prettier-config", "@bn-digital/eslint-config", "@bn-digital/stylelint-config", "lint-staged"]          : []),        ...devDeps,      ],      name: BrandNewProject._slugify(name),      parent,      packageManager,      packageName:        packageName ??        (parent          ? [`@${parent?.name}`, name].map(it => BrandNewProject._slugify(it)).join("/")          : BrandNewProject._slugify(name)),      projenrcJson,      projenCommand,      ...options,    } as T  }  private static _slugify(string: string): string {    return string      .replace(/([a-z])([A-Z])/g, "$1-$2")      .replace(/[\s_]+/g, "-")      .toLowerCase()  }  /**   * @inheritDoc   */  preSynthesize() {    this.packageJson?.addOverride("name", this.packageName)    !this.parent && this.packageJson?.addOverride("scripts.projen", "projen")    this.packageJson?.addOverride("dependencies", this._dependencyMap(DependencyType.RUNTIME, DependencyType.BUILD))    this.packageJson?.addOverride("devDependencies", this._dependencyMap(DependencyType.DEVENV))    this.packageJson?.addOverride("peerDependencies", this._dependencyMap(DependencyType.PEER))    this.packageJson?.addOverride("bundledDependencies", this._dependencyMap(DependencyType.BUNDLED))    super.preSynthesize()  }  /**   * @inheritDoc   */  postSynthesize() {    super.postSynthesize()  }  /**   * @param {DependencyType[]} deps   * @internal   */  private _dependencyMap(...deps: DependencyType[]): { [key: string]: string } {    return this.deps.all      .filter(it => deps.some(that => that === it.type))      .map(value => ({ [value.name]: value.version ?? "*" }))      .reduce((each, all) => ({ ...all, ...each }), {})  }}

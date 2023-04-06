@@ -1,11 +1,12 @@
-import { BrandNewProject, BrandNewProjectOptions } from '../brand-new'
+import { BrandNewProject, BrandNewProjectOptions } from "../brand-new"
 
 const defaultOptions: StrapiOptions = {
+  version: "4.9.0",
   users: {
     enabled: true,
   },
   database: {
-    client: 'sqlite',
+    client: "sqlite",
   },
   graphql: {
     apolloServer: true,
@@ -37,8 +38,7 @@ export interface StrapiOptions {
 }
 
 export interface StrapiProjectOptions extends BrandNewProjectOptions {
-  readonly strapi?: boolean
-  readonly strapiOptions?: StrapiOptions
+  readonly strapi?: StrapiOptions
 }
 
 /**
@@ -48,8 +48,8 @@ export class StrapiProject extends BrandNewProject {
   constructor(options: StrapiProjectOptions) {
     const strapiOptions: StrapiOptions = {
       ...defaultOptions,
-      ...options.strapiOptions,
-      version: options.strapiOptions?.version ?? defaultOptions.version,
+      ...options.strapi,
+      database: { client: "postgres" },
     }
 
     super({
@@ -61,8 +61,11 @@ export class StrapiProject extends BrandNewProject {
         ...StrapiProject._resolveDatabaseDeps(strapiOptions),
         ...StrapiProject._resolveUsersDeps(strapiOptions),
       ],
-      devDeps: [...(options?.devDeps ?? []), ...StrapiProject._resolveDefaultDevDeps()],
-      gitignore: ['.tmp', '.cache', '.strapi-updater.json', 'build', 'dist'],
+      devDeps: [
+        ...(options?.devDeps ?? []),
+        ...StrapiProject._resolveDefaultDevDeps(),
+        ...StrapiProject._resolveDatabaseDeps(defaultOptions),
+      ],
     })
   }
 
@@ -73,8 +76,6 @@ export class StrapiProject extends BrandNewProject {
       `@strapi/plugin-graphql`,
       `@strapi/plugin-content-manager`,
       `@strapi/plugin-content-type-builder`,
-      `@strapi/typescript-utils`,
-      `strapi-plugin-config-sync`,
     ]
   }
 
@@ -84,9 +85,9 @@ export class StrapiProject extends BrandNewProject {
 
   private static _resolveEmailDeps(options: StrapiOptions): string[] {
     switch (options?.email?.provider) {
-      case 'sendgrid':
-      case 'mailgun':
-      case 'nodemailer':
+      case "sendgrid":
+      case "mailgun":
+      case "nodemailer":
         return [`@strapi/provider-email-${options.email?.provider}`, `@bn-digital/strapi-plugin-email-emitter`]
       default:
         return []
@@ -98,15 +99,14 @@ export class StrapiProject extends BrandNewProject {
   }
 
   private static _resolveDatabaseDeps(options: StrapiOptions): string[] {
-    switch (options?.database?.client) {
-      case 'sqlite':
-        return ['better-sqlite3']
-      case 'postgres':
-        return ['pg']
-      case 'mysql':
-        return ['mysql']
+    switch (options.database?.client) {
+      case "postgres":
+        return ["pg"]
+      case "mysql":
+        return ["mysql"]
+      case "sqlite":
       default:
-        return []
+        return ["better-sqlite3"]
     }
   }
 
@@ -116,8 +116,5 @@ export class StrapiProject extends BrandNewProject {
 
   postSynthesize() {
     super.postSynthesize()
-    this.package.setScript('build', 'strapi build')
-    this.package.setScript('start', 'strapi start')
-    this.package.setScript('dev', 'strapi develop')
   }
 }
