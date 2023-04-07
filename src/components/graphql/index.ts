@@ -1,5 +1,5 @@
-import * as path from "path"
-import { Component, DependencyType, Project, SampleFile } from "projen"
+import { Component, DependencyType, JsonFile, Project, YamlFile } from "projen"
+
 
 export interface GraphqlOptions {
   readonly codegen?: boolean
@@ -15,14 +15,72 @@ export class Graphql extends Component {
     super(project)
     const mergedOptions = Graphql.withDefaults(options)
     if (mergedOptions.codegen) {
-      project.deps.addDependency("@bn-digital/graphql-config", DependencyType.DEVENV)
-      new SampleFile(project, "codegen.yml", {
-        sourcePath: path.join(process.cwd(), "assets", "graphql", "codegen.yml"),
+      project.root.deps.addDependency("@bn-digital/graphql-config", DependencyType.DEVENV)
+      new YamlFile(project, "codegen.yml", {
+        obj: {
+          schema: ["http://localhost:8080/graphql"],
+          documents: ["src/graphql/*/*.graphql"],
+          config: {
+            namingConvention: {
+              transformUnderscore: true,
+            },
+            maybeValue: "T | null | undefined",
+            inputMaybeValue: "T | null | undefined",
+            experimentalFragmentVariables: true,
+            scalars: {
+              Date: "string",
+              DateTime: "Date",
+              I18NLocaleCode: "string",
+              JSON: "object|any[]",
+              Long: "number",
+              Time: "string",
+              Upload: "unknown",
+            },
+          },
+          generates: {
+            "src/graphql/index.tsx": {
+              plugins: [
+                {
+                  "fragment-matcher": {
+                    useExplicitTyping: true,
+                  },
+                },
+                {
+                  "typescript-react-apollo": {
+                    addDocBlocks: false,
+                    withComponent: true,
+                    withHooks: true,
+                    withMutationOptionsType: false,
+                  },
+                },
+              ],
+            },
+            "src/types/graphql.d.ts": {
+              config: {
+                noExport: true,
+                skipTypename: true,
+                enumsAsTypes: true,
+              },
+              plugins: ["typescript", "typescript-operations"],
+            },
+          },
+        },
       })
     }
     if (mergedOptions.config) {
-      new SampleFile(project, ".graphqlconfig", {
-        sourcePath: path.join(process.cwd(), "assets", "graphql", ".graphqlconfig"),
+      new JsonFile(project, ".graphqlconfig", {
+        obj: {
+          schemaPath: `../cms/src/graphql/schema.graphql`,
+          documents: ["**/src/graphql/fragments/*.graphql"],
+          include: ["**/src/graphql/queries/*.graphql", "**/src/graphql/mutations/*.graphql"],
+          extensions: {
+            endpoints: {
+              development: {
+                url: "http://127.0.0.1:8080/graphql",
+              },
+            },
+          },
+        },
       })
     }
   }

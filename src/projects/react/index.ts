@@ -14,11 +14,11 @@ export interface ReactProjectOptions extends BrandNewProjectOptions {
   readonly react?: ReactOptions
 }
 
-const defaultOptions: ReactOptions = {
+export const defaultReactOptions: ReactOptions = {
   version: "18.2.0",
   antd: { enabled: true, version: AntDesignVersion.V4 },
   i18n: { enabled: false },
-  router: { enabled: true },
+  router: { enabled: true, version: "6.10.0" },
 }
 
 /**
@@ -32,10 +32,13 @@ export class ReactProject extends BrandNewProject {
   constructor(options: ReactProjectOptions) {
     const mergedOptions = BrandNewProject._withDefaults<ReactProjectOptions>({
       ...options,
-      deps: (options?.deps ?? []).concat("react", "react-dom"),
+      deps: (options?.deps ?? []).concat(
+        `react@^${options.react?.version ?? defaultReactOptions.version}`,
+        `react-dom@^${options.react?.version ?? defaultReactOptions.version}`
+      ),
       devDeps: (options?.devDeps ?? []).concat("@types/react", "@types/react-dom", "@bn-digital/vite"),
       react: {
-        ...defaultOptions,
+        ...defaultReactOptions,
         ...options.react,
       },
     })
@@ -46,10 +49,8 @@ export class ReactProject extends BrandNewProject {
   }
 
   preSynthesize() {
-    this.tryFindObjectFile("package.json")?.addOverride("scripts", {
-      start: "yarn vite serve",
-      build: "yarn vite build",
-    })
+    this.tryFindObjectFile("package.json")?.addOverride("scripts.start", "npx vite serve")
+    this.tryFindObjectFile("package.json")?.addOverride("scripts.build", "npx vite build")
     super.preSynthesize()
   }
 }

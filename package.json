@@ -11,16 +11,20 @@
     "compile": "npx projen compile",
     "default": "npx projen default",
     "docgen": "npx projen docgen",
+    "lint": "npx projen lint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
     "post-compile": "npx projen post-compile",
+    "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "publish:github:latest": "npx projen publish:github:latest",
     "publish:npm:latest": "npx projen publish:npm:latest",
     "release:latest": "npx projen release:latest",
     "test": "npx projen test",
     "unbump": "npx projen unbump",
+    "upgrade": "npx projen upgrade",
+    "yarn": "npx projen yarn",
     "projen": "npx projen"
   },
   "author": {
@@ -29,7 +33,7 @@
     "organization": true
   },
   "devDependencies": {
-    "@bn-digital/eslint-config": "^2.1.17",
+    "@bn-digital/eslint-config": "^2.1.18",
     "@bn-digital/prettier-config": "^2.3.7",
     "@bn-digital/typescript-config": "^1.3.1",
     "@types/jest": "^29.5.0",
@@ -41,16 +45,23 @@
     "jsii-diff": "^1.80.0",
     "jsii-docgen": "^7.1.46",
     "jsii-pacmak": "^1.80.0",
-    "lint-staged": "^13.2.0",
-    "projen": "0.71.0",
+    "lint-staged": "^13.2.1",
+    "npm-check-updates": "^16",
+    "projen": "0.71.5",
     "standard-version": "^9",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "5.x"
   },
   "peerDependencies": {
-    "projen": "0.71.0"
+    "projen": "0.71.5"
   },
+  "dependencies": {
+    "comment-json": "^4.2.3"
+  },
+  "bundledDependencies": [
+    "comment-json"
+  ],
   "engines": {
     "node": ">= 16.0.0"
   },
@@ -59,8 +70,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.7.0",
-  "types": "lib/index.d.ts",
   "typesVersions": {
     "<=3.9": {
       "lib/*": [
@@ -69,6 +78,8 @@
       ]
     }
   },
+  "version": "0.0.0",
+  "types": "lib/index.d.ts",
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
@@ -96,7 +107,8 @@
       "/node_modules/"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/build/"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"
@@ -115,9 +127,34 @@
     }
   },
   "eslintConfig": {
-    "extends": "@bn-digital/eslint-config/typescript"
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts"
+        ],
+        "extends": "@bn-digital/eslint-config/typescript"
+      },
+      {
+        "files": [
+          "packages/cloud/src/**/*.ts"
+        ],
+        "extends": "@bn-digital/eslint-config/typescript"
+      },
+      {
+        "files": [
+          "packages/cms/**/*.ts"
+        ],
+        "extends": "@bn-digital/eslint-config/strapi"
+      },
+      {
+        "files": [
+          "packages/**/src/**/*.tsx"
+        ],
+        "extends": "@bn-digital/eslint-config/react"
+      }
+    ]
   },
-  "prettier": "@bn-digital/prettier-config",
+  "prettier": "@bn-digital/prettier-config@*",
   "packageManager": "yarn@3.5.0",
   "workspaces": [
     "packages/*"

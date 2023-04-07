@@ -70,10 +70,10 @@
     },
     "install": {
       "name": "install",
-      "description": "Install project dependencies and update lockfile (non-frozen)",
+      "description": "Install dependencies",
       "steps": [
         {
-          "exec": "yarn install"
+          "exec": "npx projen yarn"
         }
       ]
     },
@@ -85,6 +85,9 @@
           "exec": "yarn install --immutable"
         }
       ]
+    },
+    "lint": {
+      "name": "lint"
     },
     "package": {
       "name": "package",
@@ -122,12 +125,16 @@
         }
       ]
     },
+    "post-upgrade": {
+      "name": "post-upgrade",
+      "description": "Runs after upgrading dependencies"
+    },
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation",
       "steps": [
         {
-          "exec": "npx eslint --fix --cache src/**/*.{js,jsx,ts,tsx}"
+          "exec": "npx projen lint"
         }
       ]
     },
@@ -213,6 +220,60 @@
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "upgrade": {
+      "name": "upgrade",
+      "description": "upgrade dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='jsii'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii'"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii'"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='jsii'"
+        },
+        {
+          "exec": "yarn install"
+        },
+        {
+          "exec": "yarn upgrade"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "yarn": {
+      "name": "yarn",
+      "steps": [
+        {
+          "say": "Downloading dependencies from NPM registry",
+          "name": "install",
+          "exec": "yarn"
+        },
+        {
+          "say": "Optimizing dependencies duplicates",
+          "name": "optimize",
+          "exec": "yarn dedupe"
         }
       ]
     }

@@ -71,11 +71,11 @@ const brandNewProjectOptions: BrandNewProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 
@@ -272,16 +272,6 @@ public readonly ide: IdeOptions;
 
 ---
 
-##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.BrandNewProjectOptions.property.graphql"></a>
-
-```typescript
-public readonly graphql: GraphqlOptions;
-```
-
-- *Type:* @bn-digital/projen.graphql.GraphqlOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.BrandNewProjectOptions.property.helm"></a>
 
 ```typescript
@@ -319,6 +309,16 @@ public readonly devDeps: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.BrandNewProjectOptions.property.graphql"></a>
+
+```typescript
+public readonly graphql: GraphqlOptions;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlOptions
 
 ---
 
@@ -384,19 +384,8 @@ const dockerOptions: docker.DockerOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@bn-digital/projen.docker.DockerOptions.property.image">image</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.docker.DockerOptions.property.path">path</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.docker.DockerOptions.property.tag">tag</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `image`<sup>Optional</sup> <a name="image" id="@bn-digital/projen.docker.DockerOptions.property.image"></a>
-
-```typescript
-public readonly image: string;
-```
-
-- *Type:* string
 
 ---
 
@@ -505,11 +494,11 @@ const fullStackProjectOptions: FullStackProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.dockerCompose">dockerCompose</a></code> | <code>boolean</code> | *No description.* |
@@ -709,16 +698,6 @@ public readonly ide: IdeOptions;
 
 ---
 
-##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.FullStackProjectOptions.property.graphql"></a>
-
-```typescript
-public readonly graphql: GraphqlOptions;
-```
-
-- *Type:* @bn-digital/projen.graphql.GraphqlOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.FullStackProjectOptions.property.helm"></a>
 
 ```typescript
@@ -756,6 +735,16 @@ public readonly devDeps: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.FullStackProjectOptions.property.graphql"></a>
+
+```typescript
+public readonly graphql: GraphqlOptions;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlOptions
 
 ---
 
@@ -1111,11 +1100,11 @@ const htmlProjectOptions: HtmlProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.htmlOptions">htmlOptions</a></code> | <code><a href="#@bn-digital/projen.HtmlOptions">HtmlOptions</a></code> | *No description.* |
@@ -1313,16 +1302,6 @@ public readonly ide: IdeOptions;
 
 ---
 
-##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.HtmlProjectOptions.property.graphql"></a>
-
-```typescript
-public readonly graphql: GraphqlOptions;
-```
-
-- *Type:* @bn-digital/projen.graphql.GraphqlOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.HtmlProjectOptions.property.helm"></a>
 
 ```typescript
@@ -1360,6 +1339,16 @@ public readonly devDeps: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.HtmlProjectOptions.property.graphql"></a>
+
+```typescript
+public readonly graphql: GraphqlOptions;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlOptions
 
 ---
 
@@ -1625,6 +1614,56 @@ public readonly image: ImageOptions;
 
 ---
 
+### PackageJsonOptions <a name="PackageJsonOptions" id="@bn-digital/projen.node.PackageJsonOptions"></a>
+
+#### Initializer <a name="Initializer" id="@bn-digital/projen.node.PackageJsonOptions.Initializer"></a>
+
+```typescript
+import { node } from '@bn-digital/projen'
+
+const packageJsonOptions: node.PackageJsonOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.PackageJsonOptions.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.PackageJsonOptions.property.private">private</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.PackageJsonOptions.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@bn-digital/projen.node.PackageJsonOptions.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `private`<sup>Optional</sup> <a name="private" id="@bn-digital/projen.node.PackageJsonOptions.property.private"></a>
+
+```typescript
+public readonly private: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@bn-digital/projen.node.PackageJsonOptions.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
 ### ReactOptions <a name="ReactOptions" id="@bn-digital/projen.ReactOptions"></a>
 
 #### Initializer <a name="Initializer" id="@bn-digital/projen.ReactOptions.Initializer"></a>
@@ -1715,11 +1754,11 @@ const reactProjectOptions: ReactProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.react">react</a></code> | <code><a href="#@bn-digital/projen.ReactOptions">ReactOptions</a></code> | *No description.* |
@@ -1917,16 +1956,6 @@ public readonly ide: IdeOptions;
 
 ---
 
-##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.ReactProjectOptions.property.graphql"></a>
-
-```typescript
-public readonly graphql: GraphqlOptions;
-```
-
-- *Type:* @bn-digital/projen.graphql.GraphqlOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.ReactProjectOptions.property.helm"></a>
 
 ```typescript
@@ -1964,6 +1993,16 @@ public readonly devDeps: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.ReactProjectOptions.property.graphql"></a>
+
+```typescript
+public readonly graphql: GraphqlOptions;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlOptions
 
 ---
 
@@ -2012,6 +2051,7 @@ const routerOptions: RouterOptions = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.RouterOptions.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.RouterOptions.property.version">version</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -2022,6 +2062,16 @@ public readonly enabled: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@bn-digital/projen.RouterOptions.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -2126,11 +2176,11 @@ const strapiProjectOptions: StrapiProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.strapi">strapi</a></code> | <code><a href="#@bn-digital/projen.StrapiOptions">StrapiOptions</a></code> | *No description.* |
@@ -2328,16 +2378,6 @@ public readonly ide: IdeOptions;
 
 ---
 
-##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.StrapiProjectOptions.property.graphql"></a>
-
-```typescript
-public readonly graphql: GraphqlOptions;
-```
-
-- *Type:* @bn-digital/projen.graphql.GraphqlOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.StrapiProjectOptions.property.helm"></a>
 
 ```typescript
@@ -2375,6 +2415,16 @@ public readonly devDeps: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `graphql`<sup>Optional</sup> <a name="graphql" id="@bn-digital/projen.StrapiProjectOptions.property.graphql"></a>
+
+```typescript
+public readonly graphql: GraphqlOptions;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlOptions
 
 ---
 
@@ -3491,7 +3541,9 @@ Options for privately hosted scoped packages.
 
 ---
 
-##### `scripts`<sup>Optional</sup> <a name="scripts" id="@bn-digital/projen.TemplateProjectOptions.property.scripts"></a>
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@bn-digital/projen.TemplateProjectOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
 
 ```typescript
 public readonly scripts: {[ key: string ]: string};
@@ -3504,6 +3556,7 @@ npm scripts to include.
 
 If a script has the same name as a standard script,
 the standard script will be overwritten.
+Also adds the script as a task.
 
 ---
 
@@ -5249,15 +5302,15 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.BrandNewProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.BrandNewProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.BrandNewProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
 ---
@@ -5535,13 +5588,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.BrandNewProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.BrandNewProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -5552,6 +5605,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -5585,6 +5639,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.BrandNewProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.BrandNewProject.property.linters"></a>
 
 ```typescript
@@ -5612,16 +5676,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.BrandNewProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -5665,18 +5720,25 @@ this task should synthesize the project files.
 ```typescript
 import { docker } from '@bn-digital/projen'
 
-new docker.Docker(project: Project)
+new docker.Docker(project: Project, options: DockerOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.docker.Docker.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.docker.Docker.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.docker.Docker.Initializer.parameter.options"></a>
+
+- *Type:* @bn-digital/projen.docker.DockerOptions
 
 ---
 
@@ -5735,6 +5797,23 @@ public readonly project: Project;
 
 ---
 
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.FILENAME">FILENAME</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `FILENAME`<sup>Required</sup> <a name="FILENAME" id="@bn-digital/projen.docker.Docker.property.FILENAME"></a>
+
+```typescript
+public readonly FILENAME: string;
+```
+
+- *Type:* string
+
+---
 
 ### Editorconfig <a name="Editorconfig" id="@bn-digital/projen.ide.Editorconfig"></a>
 
@@ -6412,16 +6491,18 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.FullStackProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.FullStackProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProject.property.backend">backend</a></code> | <code><a href="#@bn-digital/projen.BrandNewProject">BrandNewProject</a></code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProject.property.frontend">frontend</a></code> | <code><a href="#@bn-digital/projen.BrandNewProject">BrandNewProject</a></code> | *No description.* |
 
 ---
 
@@ -6698,13 +6779,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.FullStackProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.FullStackProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -6715,6 +6796,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -6748,6 +6830,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.FullStackProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.FullStackProject.property.linters"></a>
 
 ```typescript
@@ -6775,16 +6867,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.FullStackProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -6795,6 +6878,26 @@ public readonly yarn: Yarn;
 ```
 
 - *Type:* @bn-digital/projen.node.Yarn
+
+---
+
+##### `backend`<sup>Optional</sup> <a name="backend" id="@bn-digital/projen.FullStackProject.property.backend"></a>
+
+```typescript
+public readonly backend: BrandNewProject;
+```
+
+- *Type:* <a href="#@bn-digital/projen.BrandNewProject">BrandNewProject</a>
+
+---
+
+##### `frontend`<sup>Optional</sup> <a name="frontend" id="@bn-digital/projen.FullStackProject.property.frontend"></a>
+
+```typescript
+public readonly frontend: BrandNewProject;
+```
+
+- *Type:* <a href="#@bn-digital/projen.BrandNewProject">BrandNewProject</a>
 
 ---
 
@@ -7335,15 +7438,15 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.HtmlProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.HtmlProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.HtmlProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.HtmlProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
 ---
@@ -7621,13 +7724,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.HtmlProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.HtmlProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -7638,6 +7741,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -7671,6 +7775,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.HtmlProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.HtmlProject.property.linters"></a>
 
 ```typescript
@@ -7698,16 +7812,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.HtmlProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -7996,9 +8101,8 @@ Synthesizes files to the project output directory.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.ide.Linters.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ide.Linters.property.eslint">eslint</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ide.Linters.property.prettier">prettier</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ide.Linters.property.stylelint">stylelint</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ide.Linters.property.options">options</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ide.Linters.property.task">task</a></code> | <code>projen.Task</code> | *No description.* |
 
 ---
 
@@ -8012,33 +8116,23 @@ public readonly project: Project;
 
 ---
 
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@bn-digital/projen.ide.Linters.property.eslint"></a>
+##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.ide.Linters.property.options"></a>
 
 ```typescript
-public readonly eslint: boolean;
+public readonly options: LintersOptions;
 ```
 
-- *Type:* boolean
+- *Type:* @bn-digital/projen.ide.LintersOptions
 
 ---
 
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@bn-digital/projen.ide.Linters.property.prettier"></a>
+##### `task`<sup>Required</sup> <a name="task" id="@bn-digital/projen.ide.Linters.property.task"></a>
 
 ```typescript
-public readonly prettier: boolean;
+public readonly task: Task;
 ```
 
-- *Type:* boolean
-
----
-
-##### `stylelint`<sup>Optional</sup> <a name="stylelint" id="@bn-digital/projen.ide.Linters.property.stylelint"></a>
-
-```typescript
-public readonly stylelint: boolean;
-```
-
-- *Type:* boolean
+- *Type:* projen.Task
 
 ---
 
@@ -8369,15 +8463,15 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.NextProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.NextProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.NextProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.NextProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.NextProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.NextProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.NextProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
 ---
@@ -8655,13 +8749,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.NextProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.NextProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -8672,6 +8766,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -8705,6 +8800,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.NextProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.NextProject.property.linters"></a>
 
 ```typescript
@@ -8732,16 +8837,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.NextProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -8775,6 +8871,391 @@ The name of the default task (the task executed when `projen` is run without arg
 
 Normally
 this task should synthesize the project files.
+
+---
+
+### PackageJsonFile <a name="PackageJsonFile" id="@bn-digital/projen.node.PackageJsonFile"></a>
+
+#### Initializers <a name="Initializers" id="@bn-digital/projen.node.PackageJsonFile.Initializer"></a>
+
+```typescript
+import { node } from '@bn-digital/projen'
+
+new node.PackageJsonFile(project: Project, options?: PackageJsonOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.node.PackageJsonOptions</code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.node.PackageJsonFile.Initializer.parameter.project"></a>
+
+- *Type:* projen.Project
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@bn-digital/projen.node.PackageJsonFile.Initializer.parameter.options"></a>
+
+- *Type:* @bn-digital/projen.node.PackageJsonOptions
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.synthesize">synthesize</a></code> | Writes the file to the project's output directory. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.addOverride">addOverride</a></code> | Adds an override to the synthesized object file. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.addToArray">addToArray</a></code> | Adds to an array in the synthesized object file. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.patch">patch</a></code> | Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information. |
+
+---
+
+##### `postSynthesize` <a name="postSynthesize" id="@bn-digital/projen.node.PackageJsonFile.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@bn-digital/projen.node.PackageJsonFile.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@bn-digital/projen.node.PackageJsonFile.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Writes the file to the project's output directory.
+
+##### `addDeletionOverride` <a name="addDeletionOverride" id="@bn-digital/projen.node.PackageJsonFile.addDeletionOverride"></a>
+
+```typescript
+public addDeletionOverride(path: string): void
+```
+
+Syntactic sugar for `addOverride(path, undefined)`.
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.PackageJsonFile.addDeletionOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the value to delete.
+
+---
+
+##### `addOverride` <a name="addOverride" id="@bn-digital/projen.node.PackageJsonFile.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+Adds an override to the synthesized object file.
+
+If the override is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example,
+```typescript
+project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+```
+would add the overrides
+```json
+"compilerOptions": {
+  "alwaysStrict": true,
+  "lib": [
+    "dom",
+    "dom.iterable",
+    "esnext"
+  ]
+  ...
+}
+...
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.PackageJsonFile.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to override values in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@bn-digital/projen.node.PackageJsonFile.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+Could be primitive or complex.
+
+---
+
+##### `addToArray` <a name="addToArray" id="@bn-digital/projen.node.PackageJsonFile.addToArray"></a>
+
+```typescript
+public addToArray(path: string, values: any): void
+```
+
+Adds to an array in the synthesized object file.
+
+If the array is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example, with the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules"],
+  "lib": ["es2019"]
+  ...
+}
+...
+```
+
+```typescript
+project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+```
+would result in the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules", "coverage"],
+  "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+  ...
+}
+...
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.PackageJsonFile.addToArray.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to att to arrays in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `values`<sup>Required</sup> <a name="values" id="@bn-digital/projen.node.PackageJsonFile.addToArray.parameter.values"></a>
+
+- *Type:* any
+
+The values to add.
+
+Could be primitive or complex.
+
+---
+
+##### `patch` <a name="patch" id="@bn-digital/projen.node.PackageJsonFile.patch"></a>
+
+```typescript
+public patch(patches: JsonPatch): void
+```
+
+Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information.
+
+For example, with the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules"],
+  "lib": ["es2019"]
+  ...
+}
+...
+```
+
+```typescript
+project.tsconfig.file.patch(JsonPatch.add("/compilerOptions/exclude/-", "coverage"));
+project.tsconfig.file.patch(JsonPatch.replace("/compilerOptions/lib", ["dom", "dom.iterable", "esnext"]));
+```
+would result in the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules", "coverage"],
+  "lib": ["dom", "dom.iterable", "esnext"]
+  ...
+}
+...
+```
+
+###### `patches`<sup>Required</sup> <a name="patches" id="@bn-digital/projen.node.PackageJsonFile.patch.parameter.patches"></a>
+
+- *Type:* projen.JsonPatch
+
+The patch operations to apply.
+
+---
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.absolutePath">absolutePath</a></code> | <code>string</code> | The absolute path of this file. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.path">path</a></code> | <code>string</code> | The file path, relative to the project root. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.changed">changed</a></code> | <code>boolean</code> | Indicates if the file has been changed during synthesis. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.marker">marker</a></code> | <code>string</code> | The projen marker, used to identify files as projen-generated. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.executable">executable</a></code> | <code>boolean</code> | Indicates if the file should be marked as executable. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.readonly">readonly</a></code> | <code>boolean</code> | Indicates if the file should be read-only or read-write. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.omitEmpty">omitEmpty</a></code> | <code>boolean</code> | Indicates if empty objects and arrays are omitted from the output object. |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.supportsComments">supportsComments</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.node.PackageJsonFile.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+##### `absolutePath`<sup>Required</sup> <a name="absolutePath" id="@bn-digital/projen.node.PackageJsonFile.property.absolutePath"></a>
+
+```typescript
+public readonly absolutePath: string;
+```
+
+- *Type:* string
+
+The absolute path of this file.
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.PackageJsonFile.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+The file path, relative to the project root.
+
+---
+
+##### `changed`<sup>Optional</sup> <a name="changed" id="@bn-digital/projen.node.PackageJsonFile.property.changed"></a>
+
+```typescript
+public readonly changed: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file has been changed during synthesis.
+
+This property is
+only available in `postSynthesize()` hooks. If this is `undefined`, the
+file has not been synthesized yet.
+
+---
+
+##### `marker`<sup>Optional</sup> <a name="marker" id="@bn-digital/projen.node.PackageJsonFile.property.marker"></a>
+
+```typescript
+public readonly marker: string;
+```
+
+- *Type:* string
+
+The projen marker, used to identify files as projen-generated.
+
+Value is undefined if the project is being ejected.
+
+---
+
+##### `executable`<sup>Required</sup> <a name="executable" id="@bn-digital/projen.node.PackageJsonFile.property.executable"></a>
+
+```typescript
+public readonly executable: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file should be marked as executable.
+
+---
+
+##### `readonly`<sup>Required</sup> <a name="readonly" id="@bn-digital/projen.node.PackageJsonFile.property.readonly"></a>
+
+```typescript
+public readonly readonly: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file should be read-only or read-write.
+
+---
+
+##### `omitEmpty`<sup>Required</sup> <a name="omitEmpty" id="@bn-digital/projen.node.PackageJsonFile.property.omitEmpty"></a>
+
+```typescript
+public readonly omitEmpty: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if empty objects and arrays are omitted from the output object.
+
+---
+
+##### `supportsComments`<sup>Required</sup> <a name="supportsComments" id="@bn-digital/projen.node.PackageJsonFile.property.supportsComments"></a>
+
+```typescript
+public readonly supportsComments: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.PackageJsonFile.property.FILENAME">FILENAME</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `FILENAME`<sup>Required</sup> <a name="FILENAME" id="@bn-digital/projen.node.PackageJsonFile.property.FILENAME"></a>
+
+```typescript
+public readonly FILENAME: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -9182,15 +9663,15 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.ReactProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.ReactProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.ReactProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.ReactProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.antd">antd</a></code> | <code><a href="#@bn-digital/projen.AntDesign">AntDesign</a></code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.i18n">i18n</a></code> | <code><a href="#@bn-digital/projen.I18n">I18n</a></code> | *No description.* |
@@ -9471,13 +9952,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.ReactProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.ReactProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -9488,6 +9969,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -9521,6 +10003,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.ReactProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.ReactProject.property.linters"></a>
 
 ```typescript
@@ -9548,16 +10040,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.ReactProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -9631,18 +10114,25 @@ this task should synthesize the project files.
 ```typescript
 import { Router } from '@bn-digital/projen'
 
-new Router(project: Project)
+new Router(project: Project, options?: RouterOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.Router.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.Router.Initializer.parameter.options">options</a></code> | <code><a href="#@bn-digital/projen.RouterOptions">RouterOptions</a></code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.Router.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@bn-digital/projen.Router.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@bn-digital/projen.RouterOptions">RouterOptions</a>
 
 ---
 
@@ -10028,15 +10518,15 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.StrapiProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@bn-digital/projen.StrapiProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.StrapiProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.StrapiProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProject.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
 ---
@@ -10314,13 +10804,13 @@ If undefined, this is the root project.
 
 ---
 
-##### `installTask`<sup>Required</sup> <a name="installTask" id="@bn-digital/projen.StrapiProject.property.installTask"></a>
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@bn-digital/projen.StrapiProject.property.packageName"></a>
 
 ```typescript
-public readonly installTask: Task;
+public readonly packageName: string;
 ```
 
-- *Type:* projen.Task
+- *Type:* string
 
 ---
 
@@ -10331,6 +10821,7 @@ public readonly docker: Docker;
 ```
 
 - *Type:* @bn-digital/projen.docker.Docker
+- *Default:* {}
 
 ---
 
@@ -10364,6 +10855,16 @@ public readonly ide: Ide;
 
 ---
 
+##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.StrapiProject.property.installTask"></a>
+
+```typescript
+public readonly installTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.StrapiProject.property.linters"></a>
 
 ```typescript
@@ -10391,16 +10892,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@bn-digital/projen.StrapiProject.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
+- *Default:* "yarn2"
 
 ---
 
@@ -10933,7 +11425,7 @@ DEPRECATED.
 
 ---
 
-##### `hasScript` <a name="hasScript" id="@bn-digital/projen.Template.hasScript"></a>
+##### ~~`hasScript`~~ <a name="hasScript" id="@bn-digital/projen.Template.hasScript"></a>
 
 ```typescript
 public hasScript(name: string): boolean
@@ -11987,7 +12479,10 @@ Synthesizes files to the project output directory.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.Yarn.property.configFile">configFile</a></code> | <code>projen.ObjectFile</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.Yarn.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.options">options</a></code> | <code>@bn-digital/projen.node.YarnOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.Yarn.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 
 ---
 
@@ -12001,6 +12496,26 @@ public readonly project: Project;
 
 ---
 
+##### `configFile`<sup>Required</sup> <a name="configFile" id="@bn-digital/projen.node.Yarn.property.configFile"></a>
+
+```typescript
+public readonly configFile: ObjectFile;
+```
+
+- *Type:* projen.ObjectFile
+
+---
+
+##### `defaultTask`<sup>Required</sup> <a name="defaultTask" id="@bn-digital/projen.node.Yarn.property.defaultTask"></a>
+
+```typescript
+public readonly defaultTask: Task;
+```
+
+- *Type:* projen.Task
+
+---
+
 ##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.node.Yarn.property.options"></a>
 
 ```typescript
@@ -12011,6 +12526,403 @@ public readonly options: YarnOptions;
 
 ---
 
+##### `packageJson`<sup>Required</sup> <a name="packageJson" id="@bn-digital/projen.node.Yarn.property.packageJson"></a>
+
+```typescript
+public readonly packageJson: ObjectFile;
+```
+
+- *Type:* projen.ObjectFile
+
+---
+
+
+### YarnConfigFile <a name="YarnConfigFile" id="@bn-digital/projen.node.YarnConfigFile"></a>
+
+#### Initializers <a name="Initializers" id="@bn-digital/projen.node.YarnConfigFile.Initializer"></a>
+
+```typescript
+import { node } from '@bn-digital/projen'
+
+new node.YarnConfigFile(project: Project, options?: YarnOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.node.YarnOptions</code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.node.YarnConfigFile.Initializer.parameter.project"></a>
+
+- *Type:* projen.Project
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@bn-digital/projen.node.YarnConfigFile.Initializer.parameter.options"></a>
+
+- *Type:* @bn-digital/projen.node.YarnOptions
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.synthesize">synthesize</a></code> | Writes the file to the project's output directory. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.addDeletionOverride">addDeletionOverride</a></code> | Syntactic sugar for `addOverride(path, undefined)`. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.addOverride">addOverride</a></code> | Adds an override to the synthesized object file. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.addToArray">addToArray</a></code> | Adds to an array in the synthesized object file. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.patch">patch</a></code> | Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information. |
+
+---
+
+##### `postSynthesize` <a name="postSynthesize" id="@bn-digital/projen.node.YarnConfigFile.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@bn-digital/projen.node.YarnConfigFile.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@bn-digital/projen.node.YarnConfigFile.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Writes the file to the project's output directory.
+
+##### `addDeletionOverride` <a name="addDeletionOverride" id="@bn-digital/projen.node.YarnConfigFile.addDeletionOverride"></a>
+
+```typescript
+public addDeletionOverride(path: string): void
+```
+
+Syntactic sugar for `addOverride(path, undefined)`.
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.YarnConfigFile.addDeletionOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the value to delete.
+
+---
+
+##### `addOverride` <a name="addOverride" id="@bn-digital/projen.node.YarnConfigFile.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+Adds an override to the synthesized object file.
+
+If the override is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example,
+```typescript
+project.tsconfig.file.addOverride('compilerOptions.alwaysStrict', true);
+project.tsconfig.file.addOverride('compilerOptions.lib', ['dom', 'dom.iterable', 'esnext']);
+```
+would add the overrides
+```json
+"compilerOptions": {
+  "alwaysStrict": true,
+  "lib": [
+    "dom",
+    "dom.iterable",
+    "esnext"
+  ]
+  ...
+}
+...
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.YarnConfigFile.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to override values in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@bn-digital/projen.node.YarnConfigFile.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+The value.
+
+Could be primitive or complex.
+
+---
+
+##### `addToArray` <a name="addToArray" id="@bn-digital/projen.node.YarnConfigFile.addToArray"></a>
+
+```typescript
+public addToArray(path: string, values: any): void
+```
+
+Adds to an array in the synthesized object file.
+
+If the array is nested, separate each nested level using a dot (.) in the path parameter.
+If there is an array as part of the nesting, specify the index in the path.
+
+To include a literal `.` in the property name, prefix with a `\`. In most
+programming languages you will need to write this as `"\\."` because the
+`\` itself will need to be escaped.
+
+For example, with the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules"],
+  "lib": ["es2019"]
+  ...
+}
+...
+```
+
+```typescript
+project.tsconfig.file.addToArray('compilerOptions.exclude', 'coverage');
+project.tsconfig.file.addToArray('compilerOptions.lib', 'dom', 'dom.iterable', 'esnext');
+```
+would result in the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules", "coverage"],
+  "lib": ["es2019", "dom", "dom.iterable", "esnext"]
+  ...
+}
+...
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.YarnConfigFile.addToArray.parameter.path"></a>
+
+- *Type:* string
+
+The path of the property, you can use dot notation to att to arrays in complex types.
+
+Any intermediate keys
+will be created as needed.
+
+---
+
+###### `values`<sup>Required</sup> <a name="values" id="@bn-digital/projen.node.YarnConfigFile.addToArray.parameter.values"></a>
+
+- *Type:* any
+
+The values to add.
+
+Could be primitive or complex.
+
+---
+
+##### `patch` <a name="patch" id="@bn-digital/projen.node.YarnConfigFile.patch"></a>
+
+```typescript
+public patch(patches: JsonPatch): void
+```
+
+Applies an RFC 6902 JSON-patch to the synthesized object file. See https://datatracker.ietf.org/doc/html/rfc6902 for more information.
+
+For example, with the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules"],
+  "lib": ["es2019"]
+  ...
+}
+...
+```
+
+```typescript
+project.tsconfig.file.patch(JsonPatch.add("/compilerOptions/exclude/-", "coverage"));
+project.tsconfig.file.patch(JsonPatch.replace("/compilerOptions/lib", ["dom", "dom.iterable", "esnext"]));
+```
+would result in the following object file
+```json
+"compilerOptions": {
+  "exclude": ["node_modules", "coverage"],
+  "lib": ["dom", "dom.iterable", "esnext"]
+  ...
+}
+...
+```
+
+###### `patches`<sup>Required</sup> <a name="patches" id="@bn-digital/projen.node.YarnConfigFile.patch.parameter.patches"></a>
+
+- *Type:* projen.JsonPatch
+
+The patch operations to apply.
+
+---
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.absolutePath">absolutePath</a></code> | <code>string</code> | The absolute path of this file. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.path">path</a></code> | <code>string</code> | The file path, relative to the project root. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.changed">changed</a></code> | <code>boolean</code> | Indicates if the file has been changed during synthesis. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.marker">marker</a></code> | <code>string</code> | The projen marker, used to identify files as projen-generated. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.executable">executable</a></code> | <code>boolean</code> | Indicates if the file should be marked as executable. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.readonly">readonly</a></code> | <code>boolean</code> | Indicates if the file should be read-only or read-write. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.omitEmpty">omitEmpty</a></code> | <code>boolean</code> | Indicates if empty objects and arrays are omitted from the output object. |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.lineWidth">lineWidth</a></code> | <code>number</code> | Maximum line width (set to 0 to disable folding). |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.node.YarnConfigFile.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+##### `absolutePath`<sup>Required</sup> <a name="absolutePath" id="@bn-digital/projen.node.YarnConfigFile.property.absolutePath"></a>
+
+```typescript
+public readonly absolutePath: string;
+```
+
+- *Type:* string
+
+The absolute path of this file.
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@bn-digital/projen.node.YarnConfigFile.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+The file path, relative to the project root.
+
+---
+
+##### `changed`<sup>Optional</sup> <a name="changed" id="@bn-digital/projen.node.YarnConfigFile.property.changed"></a>
+
+```typescript
+public readonly changed: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file has been changed during synthesis.
+
+This property is
+only available in `postSynthesize()` hooks. If this is `undefined`, the
+file has not been synthesized yet.
+
+---
+
+##### `marker`<sup>Optional</sup> <a name="marker" id="@bn-digital/projen.node.YarnConfigFile.property.marker"></a>
+
+```typescript
+public readonly marker: string;
+```
+
+- *Type:* string
+
+The projen marker, used to identify files as projen-generated.
+
+Value is undefined if the project is being ejected.
+
+---
+
+##### `executable`<sup>Required</sup> <a name="executable" id="@bn-digital/projen.node.YarnConfigFile.property.executable"></a>
+
+```typescript
+public readonly executable: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file should be marked as executable.
+
+---
+
+##### `readonly`<sup>Required</sup> <a name="readonly" id="@bn-digital/projen.node.YarnConfigFile.property.readonly"></a>
+
+```typescript
+public readonly readonly: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if the file should be read-only or read-write.
+
+---
+
+##### `omitEmpty`<sup>Required</sup> <a name="omitEmpty" id="@bn-digital/projen.node.YarnConfigFile.property.omitEmpty"></a>
+
+```typescript
+public readonly omitEmpty: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if empty objects and arrays are omitted from the output object.
+
+---
+
+##### `lineWidth`<sup>Required</sup> <a name="lineWidth" id="@bn-digital/projen.node.YarnConfigFile.property.lineWidth"></a>
+
+```typescript
+public readonly lineWidth: number;
+```
+
+- *Type:* number
+
+Maximum line width (set to 0 to disable folding).
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.node.YarnConfigFile.property.FILENAME">FILENAME</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `FILENAME`<sup>Required</sup> <a name="FILENAME" id="@bn-digital/projen.node.YarnConfigFile.property.FILENAME"></a>
+
+```typescript
+public readonly FILENAME: string;
+```
+
+- *Type:* string
+
+---
 
 ## Protocols <a name="Protocols" id="Protocols"></a>
 

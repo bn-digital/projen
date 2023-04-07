@@ -21,6 +21,7 @@ tsconfig.tsbuildinfo
 .env*
 /build
 /test-reports
+/test
 /coverage
 /packages
 !/assets/**

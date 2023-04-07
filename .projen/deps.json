@@ -1,14 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@bn-digital/eslint-config",
-      "type": "build"
-    },
-    {
-      "name": "@bn-digital/prettier-config",
-      "type": "build"
-    },
-    {
       "name": "@bn-digital/typescript-config",
       "type": "build"
     },
@@ -19,10 +11,6 @@
     {
       "name": "@types/node",
       "version": "^16",
-      "type": "build"
-    },
-    {
-      "name": "husky",
       "type": "build"
     },
     {
@@ -51,7 +39,8 @@
       "type": "build"
     },
     {
-      "name": "lint-staged",
+      "name": "npm-check-updates",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -73,8 +62,27 @@
     },
     {
       "name": "typescript",
-      "version": "5.x",
       "type": "build"
+    },
+    {
+      "name": "comment-json",
+      "type": "bundled"
+    },
+    {
+      "name": "@bn-digital/eslint-config",
+      "type": "devenv"
+    },
+    {
+      "name": "@bn-digital/prettier-config",
+      "type": "devenv"
+    },
+    {
+      "name": "husky",
+      "type": "devenv"
+    },
+    {
+      "name": "lint-staged",
+      "type": "devenv"
     },
     {
       "name": "projen",

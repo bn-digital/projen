@@ -1,4 +1,4 @@
-import { Component, IniFile, IResolver, Project } from "projen"
+import { Component, DependencyType, IniFile, IResolver, Project, Task } from "projen";
 
 // language=Editorconfig
 const DEFAULT_CONTENT = `
@@ -21,33 +21,54 @@ ij_typescript_blank_lines_after_imports = 2
 ij_typescript_import_sort_members = true
 ij_typescript_import_sort_module_name = true
 ij_typescript_import_merge_members = true
-ij_typescript_file_name_style = mixed`
+ij_typescript_file_name_style = mixed`;
 
 export interface IdeOptions {
-  readonly editorconfig?: boolean
+  readonly editorconfig?: boolean;
 }
 
 export interface IdeProjectOptions {
-  readonly ide?: IdeOptions
+  readonly ide?: IdeOptions;
 }
 
 export interface LintersProjectOptions {
-  readonly linters?: LintersOptions
+  readonly linters?: LintersOptions;
 }
+
+const eslintConfig = {
+  overrides: [
+    {
+      files: ["**/*.ts"],
+      extends: "@bn-digital/eslint-config/typescript",
+    },
+    {
+      files: ["packages/cloud/src/**/*.ts"],
+      extends: "@bn-digital/eslint-config/typescript",
+    },
+    {
+      files: ["packages/cms/**/*.ts"],
+      extends: "@bn-digital/eslint-config/strapi",
+    },
+    {
+      files: ["packages/**/src/**/*.tsx"],
+      extends: "@bn-digital/eslint-config/react",
+    },
+  ],
+};
 
 export interface LintersOptions {
   /**
    * @default true
    */
-  readonly eslint?: boolean
+  readonly eslint?: boolean;
   /**
    * @default true
    */
-  readonly stylelint?: boolean
+  readonly stylelint?: boolean;
   /**
    * @default true
    */
-  readonly prettier?: boolean
+  readonly prettier?: boolean;
 }
 
 export class Editorconfig extends IniFile {
@@ -56,53 +77,59 @@ export class Editorconfig extends IniFile {
       omitEmpty: true,
       editGitignore: false,
       marker: true,
-    })
+    });
   }
 
   protected synthesizeContent(resolver: IResolver): string | undefined {
-    return resolver.resolve(DEFAULT_CONTENT)
+    return resolver.resolve(DEFAULT_CONTENT);
   }
 }
 
 export class Ide extends Component {
   constructor(project: Project, options: IdeOptions) {
-    super(project)
-    if (options.editorconfig) new Editorconfig(project)
+    super(project);
+    if (options.editorconfig) new Editorconfig(project);
   }
 }
 
 export class Linters extends Component {
-  readonly eslint?: boolean
-  readonly stylelint?: boolean
-  readonly prettier?: boolean
+  readonly options: LintersOptions;
+  readonly task: Task;
 
   constructor(project: Project, options: LintersOptions) {
-    super(project)
-    this.eslint = options.eslint
-    this.prettier = options.prettier
-    this.stylelint = options.stylelint
-  }
+    super(project);
+    this.options = options;
+    this.task = this.project.tasks.tryFind("lint") ?? this.project.addTask("lint");
+    this.project.deps.addDependency("lint-staged", DependencyType.DEVENV);
+    this.project.deps.addDependency("husky", DependencyType.DEVENV);
+    const packageFile = this.project.tryFindObjectFile("package.json");
 
-  preSynthesize() {
-    super.preSynthesize()
-    const packageFile = this.project.tryFindObjectFile("package.json")
-    if (this.eslint) {
-      packageFile?.addOverride("eslintConfig", {
-        extends: "@bn-digital/eslint-config/typescript",
-      })
-      this.project.preCompileTask.prependExec("npx eslint --fix --cache src/**/*.{js,jsx,ts,tsx}")
-      this.project.testTask?.steps.push({ exec: "npx eslint --cache src/**/*.{js,jsx,ts,tsx}" })
+    if (this.options.eslint) {
+      packageFile?.addOverride("eslintConfig", eslintConfig);
+      this.project.deps.addDependency("@bn-digital/eslint-config", DependencyType.DEVENV);
+      this.task.steps.push({
+        say: "Lint TS and JS files",
+        exec: "npx eslint --fix --cache **/src/**/*.{ts,tsx}",
+      });
     }
-    if (this.prettier) {
-      packageFile?.addOverride("prettier", "@bn-digital/prettier-config")
-      this.project.testTask?.steps.push({ exec: "npx prettier --write src/**/*" })
+    if (this.options.prettier) {
+      packageFile?.addOverride("prettier", "@bn-digital/prettier-config@*");
+      this.project.deps.addDependency("@bn-digital/prettier-config", DependencyType.DEVENV);
+      this.task.steps.push({
+        say: "Format all files",
+        exec: "npx prettier --write **/*.{js,jsx,json,ts,tsx,graphql,md,yaml}",
+      });
     }
 
-    if (this.stylelint) {
-      packageFile?.addOverride("stylelint", { extends: "@bn-digital/stylelint-config" })
-      this.project.testTask?.steps.push({
-        exec: `yarn stylelint --fix ${this.project.parent ? "." : "packages/*"}/src/**/*.{scss,sass,less,css}`,
-      })
+    if (this.options.stylelint) {
+      this.task.steps.push({
+        say: "Format all style files",
+        exec: "npx stylelint --cache **/src/**/*.{scss,sass,less,css}",
+      });
+      this.project.deps.addDependency("@bn-digital/stylelint-config@*", DependencyType.DEVENV);
+      packageFile?.addOverride("stylelint", {extends: "@bn-digital/stylelint-config"});
     }
+
+    this.project.preCompileTask.prependExec(`npx projen lint`);
   }
 }
