@@ -15,8 +15,6 @@ const project = new Template({
   eslint: true,
   stylelint: false,
   prettier: true,
-  githubOptions: { mergify: true },
-  autoMerge: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
   packageManager: javascript.NodePackageManager.YARN2,
   defaultReleaseBranch: "latest",
@@ -47,6 +45,7 @@ project.package.addField("jest", {
 })
 project.addPackageIgnore("*cache")
 project.addPackageIgnore(".env*")
+project.addPackageIgnore(".mergify.yml")
 project.addPackageIgnore("/build")
 project.addPackageIgnore("/test-reports")
 project.addPackageIgnore("/test")

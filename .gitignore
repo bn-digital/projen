@@ -35,7 +35,6 @@ __snapshots__
 !/.projenrc.js
 /dist/changelog.md
 /dist/version.txt
-!/.mergify.yml
 !/test/
 /tsconfig.dev.json
 !/src/
