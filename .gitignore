@@ -33,8 +33,11 @@ coverage
 build
 __snapshots__
 !/.projenrc.js
+!/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
+!/.github/workflows/release.yml
+!/.github/workflows/upgrade-latest.yml
 !/test/
 /tsconfig.dev.json
 !/src/
@@ -49,3 +52,4 @@ tsconfig.json
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+!/.yarnrc.yml

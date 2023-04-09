@@ -2,6 +2,9 @@
   "files": [
     ".editorconfig",
     ".gitattributes",
+    ".github/workflows/build.yml",
+    ".github/workflows/release.yml",
+    ".github/workflows/upgrade-latest.yml",
     ".gitignore",
     ".projen/deps.json",
     ".projen/files.json",

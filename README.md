@@ -3,6 +3,7 @@
 Projen is a project generator used to initialize and bootstrap new projects withing the Node.js ecosystem. It gives you out-of-the-box support and configuration
 options for the most common project types, includingReact, Strapi, Next.JS, as well as big number of other popular frameworks and tools.
 
+<!--suppress HtmlDeprecatedAttribute -->
 <p align="center">
 <b>One tool to rule them all</b>
 <br/>
@@ -27,11 +28,11 @@ options for the most common project types, includingReact, Strapi, Next.JS, as w
 To get started, you can use the `npx` command to run the `projen` command line interface (CLI) and generate a new project specifying the project type:
 
 ```bash
-npx projen new --from=@bn-digital/projen@0.8.11 full-stack
+npx projen new --from=@bn-digital/projen full-stack
 ```
 
 This will generate a new project in the current directory. You can also specify a directory name to generate the project in a different directory:
 
 ```bash
-npx projen new --from=@bn-digital/projen@0.8.11 full-stack custom-directory
+npx projen new --from=@bn-digital/projen full-stack custom-directory
 ```
