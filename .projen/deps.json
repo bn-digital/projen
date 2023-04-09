@@ -22,6 +22,10 @@
       "type": "build"
     },
     {
+      "name": "jest-snapshot",
+      "type": "build"
+    },
+    {
       "name": "jsii-diff",
       "type": "build"
     },
