@@ -70,7 +70,6 @@ const brandNewProjectOptions: BrandNewProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
@@ -258,16 +257,6 @@ public readonly linters: LintersOptions;
 ```
 
 - *Type:* @bn-digital/projen.ide.LintersOptions
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.BrandNewProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -482,7 +471,6 @@ const fullStackProjectOptions: FullStackProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
@@ -673,16 +661,6 @@ public readonly linters: LintersOptions;
 ```
 
 - *Type:* @bn-digital/projen.ide.LintersOptions
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.FullStackProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -1044,7 +1022,6 @@ const htmlProjectOptions: HtmlProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
@@ -1236,16 +1213,6 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.HtmlProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.HtmlProjectOptions.property.helm"></a>
 
 ```typescript
@@ -1316,62 +1283,6 @@ public readonly htmlOptions: HtmlOptions;
 
 ---
 
-### IdeOptions <a name="IdeOptions" id="@bn-digital/projen.ide.IdeOptions"></a>
-
-#### Initializer <a name="Initializer" id="@bn-digital/projen.ide.IdeOptions.Initializer"></a>
-
-```typescript
-import { ide } from '@bn-digital/projen'
-
-const ideOptions: ide.IdeOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@bn-digital/projen.ide.IdeOptions.property.editorconfig">editorconfig</a></code> | <code>boolean</code> | *No description.* |
-
----
-
-##### `editorconfig`<sup>Optional</sup> <a name="editorconfig" id="@bn-digital/projen.ide.IdeOptions.property.editorconfig"></a>
-
-```typescript
-public readonly editorconfig: boolean;
-```
-
-- *Type:* boolean
-
----
-
-### IdeProjectOptions <a name="IdeProjectOptions" id="@bn-digital/projen.ide.IdeProjectOptions"></a>
-
-#### Initializer <a name="Initializer" id="@bn-digital/projen.ide.IdeProjectOptions.Initializer"></a>
-
-```typescript
-import { ide } from '@bn-digital/projen'
-
-const ideProjectOptions: ide.IdeProjectOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@bn-digital/projen.ide.IdeProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ide.IdeProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ### ImageOptions <a name="ImageOptions" id="@bn-digital/projen.helm.ImageOptions"></a>
 
 #### Initializer <a name="Initializer" id="@bn-digital/projen.helm.ImageOptions.Initializer"></a>
@@ -1425,9 +1336,21 @@ const lintersOptions: ide.LintersOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@bn-digital/projen.ide.LintersOptions.property.editorconfig">editorconfig</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.eslint">eslint</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.prettier">prettier</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.stylelint">stylelint</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `editorconfig`<sup>Optional</sup> <a name="editorconfig" id="@bn-digital/projen.ide.LintersOptions.property.editorconfig"></a>
+
+```typescript
+public readonly editorconfig: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
 
 ---
 
@@ -1698,7 +1621,6 @@ const reactProjectOptions: ReactProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
@@ -1887,16 +1809,6 @@ public readonly linters: LintersOptions;
 ```
 
 - *Type:* @bn-digital/projen.ide.LintersOptions
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ReactProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -2109,7 +2021,6 @@ const strapiProjectOptions: StrapiProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
@@ -2298,16 +2209,6 @@ public readonly linters: LintersOptions;
 ```
 
 - *Type:* @bn-digital/projen.ide.LintersOptions
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.StrapiProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -2548,9 +2449,8 @@ const templateProjectOptions: TemplateProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.publishToPypi">publishToPypi</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | Publish to pypi. |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.python">python</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.rootdir">rootdir</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.visibility">visibility</a></code> | <code>projen.javascript.NpmAccess</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.stylelint">stylelint</a></code> | <code>boolean</code> | *No description.* |
 
 ---
 
@@ -4715,16 +4615,6 @@ public readonly rootdir: string;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.TemplateProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.TemplateProjectOptions.property.linters"></a>
 
 ```typescript
@@ -4735,13 +4625,14 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `visibility`<sup>Optional</sup> <a name="visibility" id="@bn-digital/projen.TemplateProjectOptions.property.visibility"></a>
+##### `stylelint`<sup>Optional</sup> <a name="stylelint" id="@bn-digital/projen.TemplateProjectOptions.property.stylelint"></a>
 
 ```typescript
-public readonly visibility: NpmAccess;
+public readonly stylelint: boolean;
 ```
 
-- *Type:* projen.javascript.NpmAccess
+- *Type:* boolean
+- *Default:* "latest"
 
 ---
 
@@ -5268,7 +5159,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -5588,16 +5478,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.BrandNewProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -6494,7 +6374,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.FullStackProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -6816,16 +6695,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.FullStackProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -7451,7 +7320,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.HtmlProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -7774,16 +7642,6 @@ public readonly helm: Helm;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.HtmlProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.HtmlProject.property.installTask"></a>
 
 ```typescript
@@ -7961,25 +7819,18 @@ public readonly options: I18nOptions;
 ```typescript
 import { ide } from '@bn-digital/projen'
 
-new ide.Ide(project: Project, options: IdeOptions)
+new ide.Ide(project: Project)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.ide.Ide.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ide.Ide.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.ide.Ide.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
-
----
-
-##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.ide.Ide.Initializer.parameter.options"></a>
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -8476,7 +8327,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.NextProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.NextProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -8796,16 +8646,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.NextProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -9676,7 +9516,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.ReactProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -10000,16 +9839,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ReactProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -10542,7 +10371,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.StrapiProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -10862,16 +10690,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.StrapiProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -11581,7 +11399,6 @@ The command to execute.
 | <code><a href="#@bn-digital/projen.Template.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.Template.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
@@ -12294,16 +12111,6 @@ public readonly tsconfigEslint: TypescriptConfig;
 ```
 
 - *Type:* projen.javascript.TypescriptConfig
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.Template.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 

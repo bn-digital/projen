@@ -1,38 +1,46 @@
 import { cdk, github, javascript } from "projen"
-import { NodePackageManager } from "projen/lib/javascript"
 
 import { ide, node } from "../../components"
 
-export interface TemplateProjectOptions
-  extends cdk.JsiiProjectOptions,
-    ide.IdeProjectOptions,
-    ide.LintersProjectOptions {
-  readonly visibility?: javascript.NpmAccess
+export interface TemplateProjectOptions extends cdk.JsiiProjectOptions, ide.LintersProjectOptions {
+  /**
+   * @default "latest"
+   */
+  readonly stylelint?: boolean
 }
 
 /**
  * @pjid template
  */
 export class Template extends cdk.JsiiProject {
-  readonly ide: ide.Ide | undefined
   readonly linters: ide.Linters | undefined
   readonly yarn: node.Yarn | undefined
 
   constructor(options: TemplateProjectOptions) {
-    options = Template._withDefaults(options)
-    super(options)
-    if (options.ide) this.ide = new ide.Ide(this, options.ide)
-    this.linters = new ide.Linters(this, { ...options.linters })
+    const { linters, ...defaultOptions } = Template._withDefaults(options)
+    super(defaultOptions)
+    this.linters = new ide.Linters(this, { ...linters })
     if (this.package.packageManager == javascript.NodePackageManager.YARN2) {
-      this.yarn = new node.Yarn(this, { private: options.visibility === javascript.NpmAccess.RESTRICTED })
+      this.yarn = new node.Yarn(this, { private: options.npmAccess !== javascript.NpmAccess.PUBLIC })
     }
-    !this.parent && this.package.addDevDeps("@bn-digital/typescript-config", "ts-node", "projen", "typescript")
+    !this.parent && this.package.addDevDeps(...this._defaultDevDeps)
+  }
+
+  private get _defaultDevDeps() {
+    return [
+      "@bn-digital/typescript-config",
+      "ts-node",
+      "projen",
+      "typescript",
+      "lodash.template",
+      "@types/lodash.template",
+    ]
   }
 
   /**
    * @internal
    */
-  protected static _withDefaults({
+  protected static _withDefaults<T extends cdk.JsiiProjectOptions & ConstructorParameters<typeof this>[0]>({
     name,
     defaultReleaseBranch = "latest",
     author = "bn-digital",
@@ -43,13 +51,23 @@ export class Template extends cdk.JsiiProject {
     packageName = `@${author}/${name}`,
     prettier = false,
     eslint = false,
-    linters = { eslint, prettier },
+    deps = [],
+    devDeps = [],
+    bundledDeps = [],
+    stylelint = false,
+    npmAccess = javascript.NpmAccess.PUBLIC,
+    linters = {
+      eslint,
+      prettier,
+      stylelint,
+      editorconfig: true,
+    },
     workflowRunsOn,
-    packageManager = NodePackageManager.YARN2,
+    packageManager = javascript.NodePackageManager.YARN2,
     githubOptions = {},
     ...options
-  }: TemplateProjectOptions): TemplateProjectOptions {
-    const openSourced = options.visibility === javascript.NpmAccess.PUBLIC
+  }: T): T {
+    const isPublic = npmAccess === (javascript.NpmAccess.PUBLIC as const)
     return {
       author,
       authorAddress,
@@ -60,9 +78,10 @@ export class Template extends cdk.JsiiProject {
       commitGenerated: false,
       defaultReleaseBranch,
       dependabot: false,
-      bundledDeps: ["comment-json"],
-      docgen: openSourced,
-      ide: { editorconfig: true, ...options.ide },
+      deps: ["comment-json", "lodash.template"].concat(...deps),
+      devDeps: ["@types/lodash.template"].concat(...devDeps),
+      bundledDeps: ["comment-json", "lodash.template"].concat(...bundledDeps),
+      docgen: isPublic,
       github: true,
       eslint: false,
       jsiiVersion: "5.x",
@@ -78,32 +97,32 @@ export class Template extends cdk.JsiiProject {
       },
       gitignore: [".env", ...(options.gitignore ?? [])],
       jest: false,
-      licensed: openSourced,
-      license: openSourced ? "MIT" : undefined,
-      linters: { eslint, prettier, ...linters },
+      licensed: isPublic,
+      license: isPublic ? "MIT" : undefined,
+      linters,
       stale: false,
       compat: false,
       autoMerge: false,
       mutableBuild: false,
-      minNodeVersion: "16.0.0",
+      minNodeVersion: "18.0.0",
       name,
-      npmAccess: options.visibility,
-      npmignoreEnabled: openSourced,
+      npmAccess,
+      npmignoreEnabled: isPublic,
       packageName,
       prettier: false,
       peerDeps: ["projen"],
       projenrcTs: true,
-      publishTasks: openSourced,
+      publishTasks: isPublic,
       pullRequestTemplate: false,
-      releaseToNpm: openSourced,
+      releaseToNpm: isPublic,
       sampleCode: false,
       package: true,
-      projenVersion: "0.71.6",
-      workflowRunsOn: workflowRunsOn ?? [!openSourced ? "self-hosted" : "ubuntu-latest"],
+      projenVersion: "0.71.7",
+      workflowRunsOn: workflowRunsOn ?? [isPublic ? "ubuntu-latest" : "self-hosted"],
       packageManager,
       repositoryUrl,
       ...options,
-    }
+    } as T & cdk.JsiiProjectOptions
   }
 
   preSynthesize() {
