@@ -1,75 +1,1 @@
-import { DependencyType }               from "projen";
-import { FullStackProject }             from "../../src";
-import { execProjenCLI, synthSnapshot } from "../utils";
-
-
-describe("FullStack project with default settings", () => {
-  function synthProject() {
-    return new FullStackProject({
-      name: "test",
-    });
-
-  }
-
-  it("synthesizes", () => {
-    const project = synthProject();
-    project.synth()
-    expect(project.tasks.tryFind("yarn")).toBeDefined();
-    expect(project.yarn).toBeDefined();
-    expect(project.docker).toBeDefined();
-    expect(project.deps.tryGetDependency("@bn-digital/eslint-config")).toBeDefined();
-    expect(project.deps.tryGetDependency("@bn-digital/prettier-config")).toBeDefined();
-
-    expect(project.backend).toBeDefined();
-    expect(project.backend?.yarn).not.toBeDefined();
-    expect(project.backend?.linters).not.toBeDefined();
-    expect(project.backend?.docker).not.toBeDefined();
-    expect(project.backend?.ide).not.toBeDefined();
-    expect(project.backend?.graphql).not.toBeDefined();
-    expect(project.backend?.deps.tryGetDependency("better-sqlite3")).toBeDefined();
-    expect(project.backend?.packageName).toStrictEqual("@test/backend");
-    expect(project.backend?.deps.getDependency("@strapi/strapi", DependencyType.RUNTIME)?.version).toStrictEqual("^4.9.0");
-
-    expect(project.frontend).toBeDefined();
-    expect(project.frontend?.packageName).toStrictEqual("@test/frontend");
-    expect(project.frontend?.yarn).not.toBeDefined();
-    expect(project.frontend?.docker).not.toBeDefined();
-    expect(project.frontend?.ide).not.toBeDefined();
-    expect(project.frontend?.graphql).toBeDefined();
-    expect(project.frontend?.linters).not.toBeDefined();
-    expect(project.frontend?.deps.getDependency("react", DependencyType.RUNTIME)?.version).toStrictEqual("^18.2.0");
-    expect(project.frontend?.deps.getDependency("react-dom", DependencyType.RUNTIME)?.version).toStrictEqual("^18.2.0");
-    const output = synthSnapshot(project);
-    expect(output).toMatchSnapshot();
-
-  });
-
-  it("compiles", () => {
-    const project = synthProject();
-    project.synth()
-
-    execProjenCLI(project.outdir, ["compile"]);
-
-  });
-
-  it("installs", () => {
-    const project = synthProject();
-    project.synth()
-
-    execProjenCLI(project.outdir, ["install"]);
-
-  });
-  it("builds", () => {
-    const project = synthProject();
-    project.synth()
-
-    execProjenCLI(project.outdir, ["build"]);
-
-  });
-  it("lint", () => {
-    const project = synthProject();
-    project.synth()
-
-    execProjenCLI(project.outdir, ["lint"]);
-  });
-});
+import * as fs from "fs"import * as path from "path"import { DependencyType } from "projen"import { FullStackProject, ReactProject } from "../../src"import { docker, helm } from "../../src/components"import { execProjenCLI, synthSnapshot } from "../utils"describe("FullStack project with default settings", () => {  function synthProject() {    return new FullStackProject({      name: "test",    })  }  it("synthesizes", async () => {    const project = synthProject()    await project.synth()    expect(project.tasks.tryFind("yarn")).toBeDefined()    expect(project.yarn).toBeDefined()    expect(project.docker).toBeDefined()    expect(project.deps.tryGetDependency("@bn-digital/eslint-config")).toBeDefined()    expect(project.deps.tryGetDependency("@bn-digital/prettier-config")).toBeDefined()    expect(fs.existsSync(path.resolve(process.cwd(), project.outdir, docker.Docker.DOCKERFILE_FILENAME))).toBeTruthy()    expect(fs.existsSync(path.resolve(process.cwd(), project.outdir, docker.Docker.SKAFFOLD_FILENAME))).toBeTruthy()    expect(fs.existsSync(path.resolve(process.cwd(), project.outdir, helm.Helm.HELMFILE_FILENAME))).toBeTruthy()    const backend = project.backend    const frontend: ReactProject = project.frontend as ReactProject    expect(backend).toBeDefined()    expect(backend?.packageName).toStrictEqual("@test/backend")    expect(backend?.linters).not.toBeDefined()    expect(backend?.docker).not.toBeDefined()    expect(backend?.tryFindObjectFile("package.json")).toBeDefined()    expect(backend?.deps.tryGetDependency("better-sqlite3")).toBeDefined()    expect(backend?.deps.tryGetDependency("@strapi/strapi", DependencyType.RUNTIME)?.version).toStrictEqual("^4.9.0")    expect(backend?.deps.tryGetDependency("@apollo/client", DependencyType.RUNTIME)).not.toBeDefined()    expect(backend?.graphql).not.toBeDefined()    expect(frontend).toBeDefined()    expect(frontend).toBeInstanceOf(ReactProject)    expect(frontend.vite).toBeDefined()    expect(frontend?.packageName).toStrictEqual("@test/frontend")    expect(frontend?.docker).not.toBeDefined()    expect(frontend?.graphql).toBeDefined()    expect(frontend?.linters).not.toBeDefined()    expect(frontend?.tryFindObjectFile("package.json")).toBeDefined()    expect(frontend?.deps.tryGetDependency("react", DependencyType.RUNTIME)?.version).toStrictEqual("^18.2.0")    expect(frontend?.deps.tryGetDependency("react-dom", DependencyType.RUNTIME)?.version).toStrictEqual("^18.2.0")    expect(frontend?.deps.tryGetDependency("antd", DependencyType.RUNTIME)?.version).toStrictEqual("latest-4")    expect(frontend?.deps.tryGetDependency("@apollo/client", DependencyType.RUNTIME)).toBeDefined()    expect(frontend?.deps.tryGetDependency("@bn-digital/vite", DependencyType.DEVENV)).toBeDefined()    const output = synthSnapshot(project)    expect(output).toMatchSnapshot()  })  it("compiles", () => {    const project = synthProject()    project.synth()    execProjenCLI(project.outdir, ["compile"])  })  it("installs", () => {    const project = synthProject()    project.synth()    execProjenCLI(project.outdir, ["install"])  })  it("builds", () => {    const project = synthProject()    project.synth()    execProjenCLI(project.outdir, ["build"])  })  it("lint", () => {    const project = synthProject()    project.synth()    execProjenCLI(project.outdir, ["lint"])  })})

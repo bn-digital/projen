@@ -70,9 +70,7 @@ const brandNewProjectOptions: BrandNewProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
@@ -262,30 +260,10 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.BrandNewProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.BrandNewProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.BrandNewProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -493,9 +471,7 @@ const fullStackProjectOptions: FullStackProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
@@ -688,30 +664,10 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.FullStackProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.FullStackProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.FullStackProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -842,6 +798,7 @@ const graphqlOptions: graphql.GraphqlOptions = { ... }
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.graphql.GraphqlOptions.property.codegen">codegen</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.graphql.GraphqlOptions.property.config">config</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.graphql.GraphqlOptions.property.type">type</a></code> | <code>@bn-digital/projen.graphql.GraphqlDeps</code> | *No description.* |
 
 ---
 
@@ -862,6 +819,16 @@ public readonly config: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `type`<sup>Optional</sup> <a name="type" id="@bn-digital/projen.graphql.GraphqlOptions.property.type"></a>
+
+```typescript
+public readonly type: GraphqlDeps;
+```
+
+- *Type:* @bn-digital/projen.graphql.GraphqlDeps
 
 ---
 
@@ -946,61 +913,28 @@ const helmOptions: helm.HelmOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.chart">chart</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.chartVersion">chartVersion</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.release">release</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.repository">repository</a></code> | <code>@bn-digital/projen.helm.HelmChartRepositoryOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.values">values</a></code> | <code>@bn-digital/projen.helm.NodejsHelmChartValues</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.chart">chart</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.helm.HelmOptions.property.helmfile">helmfile</a></code> | <code>boolean</code> | *No description.* |
 
 ---
 
-##### `chart`<sup>Required</sup> <a name="chart" id="@bn-digital/projen.helm.HelmOptions.property.chart"></a>
+##### `chart`<sup>Optional</sup> <a name="chart" id="@bn-digital/projen.helm.HelmOptions.property.chart"></a>
 
 ```typescript
-public readonly chart: string;
+public readonly chart: boolean;
 ```
 
-- *Type:* string
+- *Type:* boolean
 
 ---
 
-##### `chartVersion`<sup>Required</sup> <a name="chartVersion" id="@bn-digital/projen.helm.HelmOptions.property.chartVersion"></a>
+##### `helmfile`<sup>Optional</sup> <a name="helmfile" id="@bn-digital/projen.helm.HelmOptions.property.helmfile"></a>
 
 ```typescript
-public readonly chartVersion: string;
+public readonly helmfile: boolean;
 ```
 
-- *Type:* string
-
----
-
-##### `release`<sup>Required</sup> <a name="release" id="@bn-digital/projen.helm.HelmOptions.property.release"></a>
-
-```typescript
-public readonly release: string;
-```
-
-- *Type:* string
-
----
-
-##### `repository`<sup>Required</sup> <a name="repository" id="@bn-digital/projen.helm.HelmOptions.property.repository"></a>
-
-```typescript
-public readonly repository: HelmChartRepositoryOptions;
-```
-
-- *Type:* @bn-digital/projen.helm.HelmChartRepositoryOptions
-
----
-
-##### `values`<sup>Required</sup> <a name="values" id="@bn-digital/projen.helm.HelmOptions.property.values"></a>
-
-```typescript
-public readonly values: NodejsHelmChartValues;
-```
-
-- *Type:* @bn-digital/projen.helm.NodejsHelmChartValues
+- *Type:* boolean
 
 ---
 
@@ -1018,25 +952,14 @@ const helmProjectOptions: helm.HelmProjectOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@bn-digital/projen.helm.HelmProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.helm.HelmProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.helm.HelmProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 
 ---
 
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.helm.HelmProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.helm.HelmProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -1099,9 +1022,7 @@ const htmlProjectOptions: HtmlProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
@@ -1292,30 +1213,10 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.HtmlProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.HtmlProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.HtmlProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -1382,62 +1283,6 @@ public readonly htmlOptions: HtmlOptions;
 
 ---
 
-### IdeOptions <a name="IdeOptions" id="@bn-digital/projen.ide.IdeOptions"></a>
-
-#### Initializer <a name="Initializer" id="@bn-digital/projen.ide.IdeOptions.Initializer"></a>
-
-```typescript
-import { ide } from '@bn-digital/projen'
-
-const ideOptions: ide.IdeOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@bn-digital/projen.ide.IdeOptions.property.editorconfig">editorconfig</a></code> | <code>boolean</code> | *No description.* |
-
----
-
-##### `editorconfig`<sup>Optional</sup> <a name="editorconfig" id="@bn-digital/projen.ide.IdeOptions.property.editorconfig"></a>
-
-```typescript
-public readonly editorconfig: boolean;
-```
-
-- *Type:* boolean
-
----
-
-### IdeProjectOptions <a name="IdeProjectOptions" id="@bn-digital/projen.ide.IdeProjectOptions"></a>
-
-#### Initializer <a name="Initializer" id="@bn-digital/projen.ide.IdeProjectOptions.Initializer"></a>
-
-```typescript
-import { ide } from '@bn-digital/projen'
-
-const ideProjectOptions: ide.IdeProjectOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@bn-digital/projen.ide.IdeProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ide.IdeProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ### ImageOptions <a name="ImageOptions" id="@bn-digital/projen.helm.ImageOptions"></a>
 
 #### Initializer <a name="Initializer" id="@bn-digital/projen.helm.ImageOptions.Initializer"></a>
@@ -1491,9 +1336,21 @@ const lintersOptions: ide.LintersOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@bn-digital/projen.ide.LintersOptions.property.editorconfig">editorconfig</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.eslint">eslint</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.prettier">prettier</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ide.LintersOptions.property.stylelint">stylelint</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `editorconfig`<sup>Optional</sup> <a name="editorconfig" id="@bn-digital/projen.ide.LintersOptions.property.editorconfig"></a>
+
+```typescript
+public readonly editorconfig: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
 
 ---
 
@@ -1682,6 +1539,7 @@ const reactOptions: ReactOptions = { ... }
 | <code><a href="#@bn-digital/projen.ReactOptions.property.i18n">i18n</a></code> | <code><a href="#@bn-digital/projen.I18nOptions">I18nOptions</a></code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactOptions.property.router">router</a></code> | <code><a href="#@bn-digital/projen.RouterOptions">RouterOptions</a></code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactOptions.property.version">version</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactOptions.property.vite">vite</a></code> | <code>@bn-digital/projen.vite.ViteOptions</code> | *No description.* |
 
 ---
 
@@ -1725,6 +1583,16 @@ public readonly version: string;
 
 ---
 
+##### `vite`<sup>Optional</sup> <a name="vite" id="@bn-digital/projen.ReactOptions.property.vite"></a>
+
+```typescript
+public readonly vite: ViteOptions;
+```
+
+- *Type:* @bn-digital/projen.vite.ViteOptions
+
+---
+
 ### ReactProjectOptions <a name="ReactProjectOptions" id="@bn-digital/projen.ReactProjectOptions"></a>
 
 #### Initializer <a name="Initializer" id="@bn-digital/projen.ReactProjectOptions.Initializer"></a>
@@ -1753,9 +1621,7 @@ const reactProjectOptions: ReactProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
@@ -1946,30 +1812,10 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ReactProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.ReactProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.ReactProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -2175,9 +2021,7 @@ const strapiProjectOptions: StrapiProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helm">helm</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helmOptions">helmOptions</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.HelmOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProjectOptions.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.GraphqlOptions</code> | *No description.* |
@@ -2368,30 +2212,10 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.StrapiProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `helm`<sup>Optional</sup> <a name="helm" id="@bn-digital/projen.StrapiProjectOptions.property.helm"></a>
 
 ```typescript
-public readonly helm: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `helmOptions`<sup>Optional</sup> <a name="helmOptions" id="@bn-digital/projen.StrapiProjectOptions.property.helmOptions"></a>
-
-```typescript
-public readonly helmOptions: HelmOptions;
+public readonly helm: HelmOptions;
 ```
 
 - *Type:* @bn-digital/projen.helm.HelmOptions
@@ -2625,9 +2449,8 @@ const templateProjectOptions: TemplateProjectOptions = { ... }
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.publishToPypi">publishToPypi</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | Publish to pypi. |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.python">python</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.rootdir">rootdir</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.LintersOptions</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.visibility">visibility</a></code> | <code>projen.javascript.NpmAccess</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.TemplateProjectOptions.property.stylelint">stylelint</a></code> | <code>boolean</code> | *No description.* |
 
 ---
 
@@ -4792,16 +4615,6 @@ public readonly rootdir: string;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.TemplateProjectOptions.property.ide"></a>
-
-```typescript
-public readonly ide: IdeOptions;
-```
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
-
----
-
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.TemplateProjectOptions.property.linters"></a>
 
 ```typescript
@@ -4812,13 +4625,14 @@ public readonly linters: LintersOptions;
 
 ---
 
-##### `visibility`<sup>Optional</sup> <a name="visibility" id="@bn-digital/projen.TemplateProjectOptions.property.visibility"></a>
+##### `stylelint`<sup>Optional</sup> <a name="stylelint" id="@bn-digital/projen.TemplateProjectOptions.property.stylelint"></a>
 
 ```typescript
-public readonly visibility: NpmAccess;
+public readonly stylelint: boolean;
 ```
 
-- *Type:* projen.javascript.NpmAccess
+- *Type:* boolean
+- *Default:* "latest"
 
 ---
 
@@ -4847,6 +4661,45 @@ public readonly enabled: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+### ViteOptions <a name="ViteOptions" id="@bn-digital/projen.vite.ViteOptions"></a>
+
+#### Initializer <a name="Initializer" id="@bn-digital/projen.vite.ViteOptions.Initializer"></a>
+
+```typescript
+import { vite } from '@bn-digital/projen'
+
+const viteOptions: vite.ViteOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.vite.ViteOptions.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.vite.ViteOptions.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@bn-digital/projen.vite.ViteOptions.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@bn-digital/projen.vite.ViteOptions.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -5306,7 +5159,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.BrandNewProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.BrandNewProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -5629,16 +5481,6 @@ public readonly helm: Helm;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.BrandNewProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.BrandNewProject.property.installTask"></a>
 
 ```typescript
@@ -5720,25 +5562,18 @@ this task should synthesize the project files.
 ```typescript
 import { docker } from '@bn-digital/projen'
 
-new docker.Docker(project: Project, options: DockerOptions)
+new docker.Docker(project: Project)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.docker.Docker.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.docker.Docker.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.docker.DockerOptions</code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.docker.Docker.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
-
----
-
-##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.docker.Docker.Initializer.parameter.options"></a>
-
-- *Type:* @bn-digital/projen.docker.DockerOptions
 
 ---
 
@@ -5784,6 +5619,9 @@ Synthesizes files to the project output directory.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.docker.Docker.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.dockerFile">dockerFile</a></code> | <code>projen.SampleFile</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.ignoreFile">ignoreFile</a></code> | <code>projen.IgnoreFile</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.skaffoldFile">skaffoldFile</a></code> | <code>projen.SampleFile</code> | *No description.* |
 
 ---
 
@@ -5797,18 +5635,59 @@ public readonly project: Project;
 
 ---
 
+##### `dockerFile`<sup>Required</sup> <a name="dockerFile" id="@bn-digital/projen.docker.Docker.property.dockerFile"></a>
+
+```typescript
+public readonly dockerFile: SampleFile;
+```
+
+- *Type:* projen.SampleFile
+
+---
+
+##### `ignoreFile`<sup>Required</sup> <a name="ignoreFile" id="@bn-digital/projen.docker.Docker.property.ignoreFile"></a>
+
+```typescript
+public readonly ignoreFile: IgnoreFile;
+```
+
+- *Type:* projen.IgnoreFile
+
+---
+
+##### `skaffoldFile`<sup>Required</sup> <a name="skaffoldFile" id="@bn-digital/projen.docker.Docker.property.skaffoldFile"></a>
+
+```typescript
+public readonly skaffoldFile: SampleFile;
+```
+
+- *Type:* projen.SampleFile
+
+---
+
 #### Constants <a name="Constants" id="Constants"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@bn-digital/projen.docker.Docker.property.FILENAME">FILENAME</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.DOCKERFILE_FILENAME">DOCKERFILE_FILENAME</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.docker.Docker.property.SKAFFOLD_FILENAME">SKAFFOLD_FILENAME</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `FILENAME`<sup>Required</sup> <a name="FILENAME" id="@bn-digital/projen.docker.Docker.property.FILENAME"></a>
+##### `DOCKERFILE_FILENAME`<sup>Required</sup> <a name="DOCKERFILE_FILENAME" id="@bn-digital/projen.docker.Docker.property.DOCKERFILE_FILENAME"></a>
 
 ```typescript
-public readonly FILENAME: string;
+public readonly DOCKERFILE_FILENAME: string;
+```
+
+- *Type:* string
+
+---
+
+##### `SKAFFOLD_FILENAME`<sup>Required</sup> <a name="SKAFFOLD_FILENAME" id="@bn-digital/projen.docker.Docker.property.SKAFFOLD_FILENAME"></a>
+
+```typescript
+public readonly SKAFFOLD_FILENAME: string;
 ```
 
 - *Type:* string
@@ -6495,7 +6374,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.FullStackProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.FullStackProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.FullStackProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -6820,16 +6698,6 @@ public readonly helm: Helm;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.FullStackProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.FullStackProject.property.installTask"></a>
 
 ```typescript
@@ -7045,7 +6913,6 @@ new helm.Helm(project: Project, options?: HelmOptions)
 | <code><a href="#@bn-digital/projen.helm.Helm.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#@bn-digital/projen.helm.Helm.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#@bn-digital/projen.helm.Helm.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
-| <code><a href="#@bn-digital/projen.helm.Helm.defaultOptions">defaultOptions</a></code> | *No description.* |
 
 ---
 
@@ -7074,12 +6941,6 @@ public synthesize(): void
 ```
 
 Synthesizes files to the project output directory.
-
-##### `defaultOptions` <a name="defaultOptions" id="@bn-digital/projen.helm.Helm.defaultOptions"></a>
-
-```typescript
-public defaultOptions(): HelmOptions
-```
 
 
 #### Properties <a name="Properties" id="Properties"></a>
@@ -7111,6 +6972,23 @@ public readonly options: HelmOptions;
 
 ---
 
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.helm.Helm.property.HELMFILE_FILENAME">HELMFILE_FILENAME</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `HELMFILE_FILENAME`<sup>Required</sup> <a name="HELMFILE_FILENAME" id="@bn-digital/projen.helm.Helm.property.HELMFILE_FILENAME"></a>
+
+```typescript
+public readonly HELMFILE_FILENAME: string;
+```
+
+- *Type:* string
+
+---
 
 ### HtmlProject <a name="HtmlProject" id="@bn-digital/projen.HtmlProject"></a>
 
@@ -7442,7 +7320,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.HtmlProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.HtmlProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.HtmlProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -7765,16 +7642,6 @@ public readonly helm: Helm;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.HtmlProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.HtmlProject.property.installTask"></a>
 
 ```typescript
@@ -7952,25 +7819,18 @@ public readonly options: I18nOptions;
 ```typescript
 import { ide } from '@bn-digital/projen'
 
-new ide.Ide(project: Project, options: IdeOptions)
+new ide.Ide(project: Project)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.ide.Ide.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ide.Ide.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.ide.IdeOptions</code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.ide.Ide.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
-
----
-
-##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.ide.Ide.Initializer.parameter.options"></a>
-
-- *Type:* @bn-digital/projen.ide.IdeOptions
 
 ---
 
@@ -8467,7 +8327,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.NextProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.NextProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.NextProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -8787,16 +8646,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.NextProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -9667,7 +9516,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.ReactProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.ReactProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -9676,6 +9524,7 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.ReactProject.property.antd">antd</a></code> | <code><a href="#@bn-digital/projen.AntDesign">AntDesign</a></code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.i18n">i18n</a></code> | <code><a href="#@bn-digital/projen.I18n">I18n</a></code> | *No description.* |
 | <code><a href="#@bn-digital/projen.ReactProject.property.router">router</a></code> | <code><a href="#@bn-digital/projen.Router">Router</a></code> | *No description.* |
+| <code><a href="#@bn-digital/projen.ReactProject.property.vite">vite</a></code> | <code>@bn-digital/projen.vite.Vite</code> | *No description.* |
 
 ---
 
@@ -9993,16 +9842,6 @@ public readonly helm: Helm;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.ReactProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `installTask`<sup>Optional</sup> <a name="installTask" id="@bn-digital/projen.ReactProject.property.installTask"></a>
 
 ```typescript
@@ -10081,6 +9920,16 @@ public readonly router: Router;
 ```
 
 - *Type:* <a href="#@bn-digital/projen.Router">Router</a>
+
+---
+
+##### `vite`<sup>Optional</sup> <a name="vite" id="@bn-digital/projen.ReactProject.property.vite"></a>
+
+```typescript
+public readonly vite: Vite;
+```
+
+- *Type:* @bn-digital/projen.vite.Vite
 
 ---
 
@@ -10522,7 +10371,6 @@ resolved from the root of _this_ project.
 | <code><a href="#@bn-digital/projen.StrapiProject.property.docker">docker</a></code> | <code>@bn-digital/projen.docker.Docker</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.graphql">graphql</a></code> | <code>@bn-digital/projen.graphql.Graphql</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.helm">helm</a></code> | <code>@bn-digital/projen.helm.Helm</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.StrapiProject.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.installTask">installTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.StrapiProject.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
@@ -10842,16 +10690,6 @@ public readonly helm: Helm;
 ```
 
 - *Type:* @bn-digital/projen.helm.Helm
-
----
-
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.StrapiProject.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
 
 ---
 
@@ -11561,7 +11399,6 @@ The command to execute.
 | <code><a href="#@bn-digital/projen.Template.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.Template.property.ide">ide</a></code> | <code>@bn-digital/projen.ide.Ide</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.linters">linters</a></code> | <code>@bn-digital/projen.ide.Linters</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.Template.property.yarn">yarn</a></code> | <code>@bn-digital/projen.node.Yarn</code> | *No description.* |
 
@@ -12277,16 +12114,6 @@ public readonly tsconfigEslint: TypescriptConfig;
 
 ---
 
-##### `ide`<sup>Optional</sup> <a name="ide" id="@bn-digital/projen.Template.property.ide"></a>
-
-```typescript
-public readonly ide: Ide;
-```
-
-- *Type:* @bn-digital/projen.ide.Ide
-
----
-
 ##### `linters`<sup>Optional</sup> <a name="linters" id="@bn-digital/projen.Template.property.linters"></a>
 
 ```typescript
@@ -12337,18 +12164,25 @@ this task should synthesize the project files.
 ```typescript
 import { vite } from '@bn-digital/projen'
 
-new vite.Vite(project: Project)
+new vite.Vite(project: Project, options?: ViteOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.vite.Vite.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.vite.Vite.Initializer.parameter.options">options</a></code> | <code>@bn-digital/projen.vite.ViteOptions</code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@bn-digital/projen.vite.Vite.Initializer.parameter.project"></a>
 
 - *Type:* projen.Project
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@bn-digital/projen.vite.Vite.Initializer.parameter.options"></a>
+
+- *Type:* @bn-digital/projen.vite.ViteOptions
 
 ---
 
@@ -12394,6 +12228,8 @@ Synthesizes files to the project output directory.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.vite.Vite.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.vite.Vite.property.deps">deps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.vite.Vite.property.options">options</a></code> | <code>@bn-digital/projen.vite.ViteOptions</code> | *No description.* |
 
 ---
 
@@ -12407,6 +12243,43 @@ public readonly project: Project;
 
 ---
 
+##### `deps`<sup>Required</sup> <a name="deps" id="@bn-digital/projen.vite.Vite.property.deps"></a>
+
+```typescript
+public readonly deps: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@bn-digital/projen.vite.Vite.property.options"></a>
+
+```typescript
+public readonly options: ViteOptions;
+```
+
+- *Type:* @bn-digital/projen.vite.ViteOptions
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@bn-digital/projen.vite.Vite.property.FILENAME">FILENAME</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `FILENAME`<sup>Required</sup> <a name="FILENAME" id="@bn-digital/projen.vite.Vite.property.FILENAME"></a>
+
+```typescript
+public readonly FILENAME: string;
+```
+
+- *Type:* string
+
+---
 
 ### Yarn <a name="Yarn" id="@bn-digital/projen.node.Yarn"></a>
 
@@ -12479,10 +12352,10 @@ Synthesizes files to the project output directory.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@bn-digital/projen.node.Yarn.property.configFile">configFile</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.options">options</a></code> | <code>@bn-digital/projen.node.YarnOptions</code> | *No description.* |
 | <code><a href="#@bn-digital/projen.node.Yarn.property.packageJson">packageJson</a></code> | <code>projen.ObjectFile</code> | *No description.* |
+| <code><a href="#@bn-digital/projen.node.Yarn.property.yarnConfig">yarnConfig</a></code> | <code>projen.ObjectFile</code> | *No description.* |
 
 ---
 
@@ -12493,16 +12366,6 @@ public readonly project: Project;
 ```
 
 - *Type:* projen.Project
-
----
-
-##### `configFile`<sup>Required</sup> <a name="configFile" id="@bn-digital/projen.node.Yarn.property.configFile"></a>
-
-```typescript
-public readonly configFile: ObjectFile;
-```
-
-- *Type:* projen.ObjectFile
 
 ---
 
@@ -12530,6 +12393,16 @@ public readonly options: YarnOptions;
 
 ```typescript
 public readonly packageJson: ObjectFile;
+```
+
+- *Type:* projen.ObjectFile
+
+---
+
+##### `yarnConfig`<sup>Optional</sup> <a name="yarnConfig" id="@bn-digital/projen.node.Yarn.property.yarnConfig"></a>
+
+```typescript
+public readonly yarnConfig: ObjectFile;
 ```
 
 - *Type:* projen.ObjectFile
@@ -12990,6 +12863,21 @@ public readonly locales: string[];
 
 
 ##### `V5` <a name="V5" id="@bn-digital/projen.AntDesignVersion.V5"></a>
+
+---
+
+
+### GraphqlDeps <a name="GraphqlDeps" id="@bn-digital/projen.graphql.GraphqlDeps"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@bn-digital/projen.graphql.GraphqlDeps.APOLLO_CLIENT">APOLLO_CLIENT</a></code> | *No description.* |
+
+---
+
+##### `APOLLO_CLIENT` <a name="APOLLO_CLIENT" id="@bn-digital/projen.graphql.GraphqlDeps.APOLLO_CLIENT"></a>
 
 ---
 

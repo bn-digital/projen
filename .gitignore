@@ -49,3 +49,4 @@ tsconfig.json
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+!/.yarnrc.yml

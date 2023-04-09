@@ -7,7 +7,7 @@ export interface AntDesignOptions {
 
 export enum AntDesignVersion {
   V4 = "latest-4",
-  V5 = "^5.3.3",
+  V5 = "^5.4.0",
 }
 
 export class AntDesign extends Component {

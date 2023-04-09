@@ -1,9 +1,13 @@
 import { Component, DependencyType, JsonFile, Project, YamlFile } from "projen"
 
+export enum GraphqlDeps {
+  APOLLO_CLIENT = "apollo-client",
+}
 
 export interface GraphqlOptions {
   readonly codegen?: boolean
   readonly config?: boolean
+  readonly type?: GraphqlDeps
 }
 
 export interface GraphqlProjectOptions {
@@ -13,8 +17,8 @@ export interface GraphqlProjectOptions {
 export class Graphql extends Component {
   constructor(project: Project, options: GraphqlOptions = {}) {
     super(project)
-    const mergedOptions = Graphql.withDefaults(options)
-    if (mergedOptions.codegen) {
+    options = Graphql.withDefaults(options)
+    if (options.codegen) {
       project.root.deps.addDependency("@bn-digital/graphql-config", DependencyType.DEVENV)
       new YamlFile(project, "codegen.yml", {
         obj: {
@@ -67,7 +71,7 @@ export class Graphql extends Component {
         },
       })
     }
-    if (mergedOptions.config) {
+    if (options.config) {
       new JsonFile(project, ".graphqlconfig", {
         obj: {
           schemaPath: `../cms/src/graphql/schema.graphql`,
@@ -82,6 +86,13 @@ export class Graphql extends Component {
           },
         },
       })
+    }
+    switch (options.type) {
+      case GraphqlDeps.APOLLO_CLIENT:
+        this.project.deps.addDependency("@apollo/client", DependencyType.RUNTIME)
+        break
+      default:
+        break
     }
   }
 

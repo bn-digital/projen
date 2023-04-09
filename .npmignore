@@ -19,9 +19,9 @@ tsconfig.tsbuildinfo
 !.jsii
 *cache
 .env*
+.mergify.yml
 /build
 /test-reports
 /test
 /coverage
 /packages
-!/assets/**
