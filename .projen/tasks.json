@@ -94,7 +94,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "npx projen package-all"
+          "exec": "npx projen package:js"
         }
       ]
     },
