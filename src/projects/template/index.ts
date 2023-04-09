@@ -127,7 +127,6 @@ export class Template extends cdk.JsiiProject {
 
   preSynthesize() {
     super.preSynthesize()
-    this.addPackageIgnore("!/assets/**")
     this.tasks.tryFind("package")?.reset("npx projen package:js")
     this.tasks.removeTask("eject")
     this.tasks.removeTask("compat")
